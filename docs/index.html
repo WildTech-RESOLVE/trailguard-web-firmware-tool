@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TrailGuard Firmware Installer</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+  <header class="appbar">
+    <div class="brand">
+      <img class="brand-logo" src="assets/images/logo.png" alt="TrailGuard logo">
+      <div>
+        <div class="brand-name">TrailGuard</div>
+        <div class="brand-tagline">Web Firmware Installer</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a class="nav-link" href="#install">Install</a>
+      <a class="nav-link" href="#download">Download</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="install">
+      <div class="hero-card primary">
+        <div class="meta-row" id="firmware-meta">
+          <div class="meta-item"><span class="pill">Version</span><span id="fw-version">Loading…</span></div>
+          <div class="meta-item"><span class="pill">Release Date</span><span id="fw-date">Loading…</span></div>
+        </div>
+        <h1>TrailGuard Communications Unit Firmware</h1>
+        <p>Follow these steps to install the latest Communications Unit firmware. Please use <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong> on a desktop computer.</p>
+        <ol class="checklist ordered">
+          <li>Insert the setup magnet into the slot and trigger the TrailGuard camera to put the unit in Setup Mode. Both SIG1 and SIG2 LEDs should illuminate.</li>
+          <li>Connect the camera to your computer with a Micro-USB data cable.</li>
+          <li>Click the Install button below, grant Web Serial permissions, and select the correct serial port.</li>
+          <li>Monitor the progress dialog and wait for the flashing process to finish. Do not disconnect until the success message appears.</li>
+          <li>After the update completes, confirm the camera reboots and enters Setup Mode. Remove the setup magnet and trigger the camera again to enter normal operation.</li>
+        </ol>
+        <div class="install-block">
+          <esp-web-install-button
+            id="installer"
+            manifest="manifest.json"
+            class="install-button"
+          >
+            <button slot="activate" class="btn primary">Install TrailGuard v2.0.0 Firmware</button>
+            <div slot="unsupported" class="note warn">
+              Web Serial not supported. Please open this page in the desktop version of Google Chrome or Microsoft Edge.
+            </div>
+            <div slot="not-allowed" class="note warn">
+              Secure context required. Use the HTTPS version of this site to continue.
+            </div>
+          </esp-web-install-button>
+            <div class="note info">
+            <p>Tips:</p>
+            <ul class="note-list">
+              <li>Keep this tab open and leave the device connected until installation completes.</li>
+                <li>If the browser cannot find the device, re-seat the USB cable and confirm the camera remains in Setup Mode.</li>
+                <li>Close other serial consoles before connecting.</li>
+                <li>Approve any Web Serial permission prompts in Chrome/Edge; the tool requires serial access to flash.</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="download">
+      <h2>Firmware Files Download</h2>
+      <p>Use these binaries for Over-The-Air (OTA) firmware updates in Setup Mode. Each file contains the application binary only.</p>
+      <ul class="download-list">
+        <li>
+          <span class="download-meta">
+            <strong>TrailGuard Camera 4B v2.0.0</strong>
+            <small>Released 2025-11-18</small>
+          </span>
+          <a class="btn" href="firmware/TRAILGUARD_CCU_FW_2.0.0.bin" download>Download v2.0.0</a>
+        </li>
+        <li>
+          <span class="download-meta">
+            <strong>TrailGuard Camera 4B v1.8.4</strong>
+            <small>Legacy firmware build for rollback</small>
+          </span>
+          <a class="btn" href="firmware/CCU_DVT_FW_1.8.4.bin" download>Download v1.8.4</a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>TrailGuard Firmware Installer • </span>
+    <span><a href="https://esphome.github.io/esp-web-tools/">Powered by ESP Web Tools</a></span>
+  </footer>
+</body>
+</html>
+
