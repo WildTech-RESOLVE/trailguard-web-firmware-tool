@@ -2,6 +2,8 @@
   "name": "TrailGuard 4B",
   "version": "v2.0.0-diagnostic",
   "release_date": "2025-11-18",
+  "new_install_prompt_erase": true,
+  "new_install_improv_wait_time": 0,
   "builds": [
     {
       "chipFamily": "ESP32-S3",
