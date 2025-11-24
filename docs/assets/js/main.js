@@ -1,5 +1,6 @@
 (function () {
   const manifestUrl = "manifest.json";
+  const modelEl = document.getElementById("fw-model");
   const versionEl = document.getElementById("fw-version");
   const dateEl = document.getElementById("fw-date");
 
@@ -25,12 +26,15 @@
   }
 
   function updateMetadata(manifest) {
-    const version = manifest.version || "2.0.0";
-    const name = manifest.name || "TrailGuard Firmware";
+    const version = manifest.version || "v2.0.0";
+    const name = manifest.name || "TrailGuard Camera";
     const releaseDate = manifest.release_date || manifest.date || "";
 
+    if (modelEl) {
+      modelEl.textContent = "TrailGuard 4B";
+    }
     if (versionEl) {
-      versionEl.textContent = `${name} ${version}`;
+      versionEl.textContent = version;
     }
     if (dateEl) {
       dateEl.textContent = releaseDate || "Unknown";
@@ -38,8 +42,11 @@
   }
 
   function setFallbackMeta() {
+    if (modelEl) {
+      modelEl.textContent = "TrailGuard 4B";
+    }
     if (versionEl) {
-      versionEl.textContent = "2.0.0";
+      versionEl.textContent = "Unknown";
     }
     if (dateEl) {
       dateEl.textContent = "Unknown";

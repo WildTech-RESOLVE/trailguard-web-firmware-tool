@@ -1,3 +1,6 @@
+.spacer {
+  height: 10px;
+}
 :root {
   --bg: #0b0f0c;
   --surface: #101813;
@@ -184,8 +187,8 @@ a {
   border-radius: 999px;
   padding: 3px 10px;
   font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
   color: var(--muted);
   box-shadow: inset 0 0 0 1px rgba(255, 122, 0, 0.1);
 }
@@ -278,8 +281,8 @@ a {
   border-radius: 999px;
   border: 1px solid var(--ring);
   font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
   color: var(--muted);
   margin-right: 10px;
 }
@@ -315,24 +318,98 @@ a {
 .download-list li {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
   gap: 12px;
+  align-items: flex-start;
   padding: 14px;
   background: var(--surface-2);
   border: 1px solid var(--ring);
   border-radius: 14px;
 }
 
-.download-meta {
+.download-list li + li {
+  margin-top: 12px;
+}
+
+.version-header {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.download-meta small {
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.version-header small {
   color: var(--muted);
   font-size: 0.8rem;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.tag-latest {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--ring);
+}
+
+.tag-variant {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--ring);
+}
+
+.version-notes {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  flex-basis: 100%;
+  display: grid;
+  gap: 2px;
+}
+
+.version-notes p {
+  margin: 0;
+}
+
+.version-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.inline-install {
+  display: inline-block;
+}
+
+.btn.secondary {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.btn.secondary:hover {
+  background: var(--btn-hover);
+}
+
+.inline-warning {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 4px;
 }
 
 .install-block {

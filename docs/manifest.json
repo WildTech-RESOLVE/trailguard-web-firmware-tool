@@ -1,5 +1,5 @@
 {
-  "name": "TrailGuard Camera 4B",
+  "name": "TrailGuard 4B Firmware",
   "version": "v2.0.0",
   "release_date": "2025-11-18",
   "new_install_prompt_erase": true,
@@ -9,10 +9,9 @@
       "chipFamily": "ESP32-S3",
       "improv": false,
       "parts": [
-        {
-          "path": "firmware/trailguard_2.0.0.bin",
-          "offset": 0
-        }
+        { "path": "firmware/bootloader.bin",       "offset": "0" },
+        { "path": "firmware/partition-table.bin",  "offset": "32768" },
+        { "path": "firmware/TrailGuard_CCU_2.0.0.bin", "offset": "131072" }
       ]
     }
   ]
