@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
   <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/troublshooting.js"></script>
 </head>
 <body>
   <header class="appbar">
@@ -18,13 +19,14 @@
       </div>
     </div>
     <nav class="nav">
-      <a class="nav-link" href="#install">Install</a>
-      <a class="nav-link" href="#download">Download</a>
+      <a class="nav-link active" href="#install" data-panel="install">Install</a>
+      <a class="nav-link" href="#download" data-panel="download">Download</a>
+      <a class="nav-link" href="#troubleshooting" data-panel="troubleshooting">Troubleshooting</a>
     </nav>
   </header>
 
   <main class="wrap">
-    <section class="hero" id="install">
+    <section class="hero panel" id="install">
       <div class="hero-card primary">
         <div class="meta-row" id="firmware-meta">
           <div class="meta-item"><span class="pill">Model</span><span id="fw-model">TrailGuard 4B</span></div>
@@ -68,7 +70,7 @@
       </div>
     </section>
 
-    <section class="card" id="download">
+    <section class="card panel panel-hidden" id="download">
       <h2>Previous Firmware Versions</h2>
       <p>Download app-only binaries for TrailGuard portal updates, or install directly from the web browser. These packages flash only the application to preserve device settings and statistics. Please note that a complete installation (using the "Install The Latest TrailGuard Firmware" instructions above) is required for updates from versions 1.x or earlier.</p>
       <ul class="download-list">
@@ -139,6 +141,93 @@
           </div>
         </li>
       </ul>
+    </section>
+
+    <section class="panel panel-hidden troubleshooting-panel" id="troubleshooting">
+      <section class="card" id="startScreen">
+        <h2>TrailGuard Troubleshooting Tool</h2>
+        <p class="muted">
+          This tool will guide you through the steps to diagnose the issue by observing the camera and communication unit light behavior.
+          <br><br>Before you begin:<br>
+        </p>
+        <ul class="checklist troubleshooting-checklist">
+          <li>Confirm the power cable is connected and the SIM card is properly seated.</li>
+          <li>Check that both antennas are securely attached to the Communications Unit.</li>
+          <li>Ensure the motion sensor is covered and all indicator lights are off.</li>
+          <li>If you are testing normal operation, keep the magnet out of the slot.</li>
+        </ul>
+        <div class="row">
+          <button class="btn primary" id="startTestBtn" type="button">Start Test</button>
+        </div>
+      </section>
+
+      <section class="card hidden" id="testScreen">
+        <div class="question-wrap">
+          <h2 id="questionTitle"></h2>
+          <p class="muted" id="questionHint"></p>
+          <div class="option-grid" id="optionGrid"></div>
+        </div>
+        <div class="row">
+          <button class="btn" id="backBtn" type="button">Back</button>
+          <button class="btn" id="restartBtn" type="button">Restart Diagnosis</button>
+        </div>
+      </section>
+
+      <section class="card hidden" id="resultScreen">
+        <p class="eyebrow">Analysis</p>
+        <h2 id="resultTitle"></h2>
+        <div class="result-block">
+          <h3>What you observed</h3>
+          <p id="resultObserved"></p>
+        </div>
+        <div class="result-block">
+          <h3>What it likely means</h3>
+          <p id="resultMeaning"></p>
+        </div>
+        <div class="result-block">
+          <h3>What to do next</h3>
+          <ul id="resultActions"></ul>
+        </div>
+        <p class="footnote result-support-note" id="supportNote"></p>
+        <div class="row">
+          <button class="btn secondary" id="contactBtn" type="button">Contact Support</button>
+          <button class="btn" id="resultBackBtn" type="button">Back</button>
+          <button class="btn" id="resultRestartBtn" type="button">Restart Diagnosis</button>
+        </div>
+        <div class="support-form-wrap hidden" id="supportFormWrap">
+          <h3>Support Request</h3>
+          <p class="muted">Fill in your contact information below. Your issue will be attached to the support request and will be reviewed by our support team.</p>
+          <form id="supportForm" class="support-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="682e6cf7-4f84-4c73-95bb-6f616084d3de">
+            <input type="hidden" name="subject" value=" New Troubleshooting Support Ticket">
+            <input type="hidden" name="from_name" value="TrailGuard Support">
+
+            <label for="clientName">Name</label>
+            <input id="clientName" name="name" type="text" required>
+
+            <label for="clientOrganization">Organization</label>
+            <input id="clientOrganization" name="organization" type="text" required>
+
+            <label for="clientEmail">Contact Email</label>
+            <input id="clientEmail" name="email" type="email" required>
+
+            <label for="issueTitle">Issue</label>
+            <textarea id="issueTitle" name="issue" rows="2" readonly></textarea>
+
+            <label for="issueObservation">Observation</label>
+            <textarea id="issueObservation" name="observation" rows="3" readonly></textarea>
+
+            <label for="additionalInfo">Additional Information</label>
+            <textarea id="additionalInfo" name="additional_information" rows="4" placeholder="Add any additional information that can help support your issue."></textarea>
+
+            <div class="row">
+              <button class="btn secondary" id="submitSupportBtn" type="submit">Submit Form</button>
+              <button class="btn" id="cancelSupportBtn" type="button">Cancel</button>
+            </div>
+          </form>
+          <p class="footnote" id="supportFormStatus"></p>
+        </div>
+      </section>
     </section>
 
   </main>

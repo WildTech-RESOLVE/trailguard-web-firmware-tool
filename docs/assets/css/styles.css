@@ -95,6 +95,15 @@ a {
   border-color: var(--ring);
 }
 
+.nav-link.active {
+  background: var(--btn-hover);
+  border-color: var(--ring);
+}
+
+.panel-hidden {
+  display: none !important;
+}
+
 .wrap {
   max-width: 1080px;
   margin: 0 auto;
@@ -460,5 +469,134 @@ esp-web-install-button[install-supported] .install-button {
 
 esp-web-install-button[install-unsupported] .install-button {
   display: none;
+}
+
+.troubleshooting-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.troubleshooting-panel .muted {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.troubleshooting-panel .eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.troubleshooting-panel .troubleshooting-checklist {
+  margin: 0 0 16px;
+  padding-left: 22px;
+  list-style: disc;
+  display: grid;
+  gap: 10px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.troubleshooting-panel .option-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.troubleshooting-panel .option-btn {
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+  background: var(--surface-2);
+}
+
+.troubleshooting-panel .row {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.troubleshooting-panel .result-block {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.troubleshooting-panel .result-block h3 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.troubleshooting-panel .result-block p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.troubleshooting-panel #resultActions {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.troubleshooting-panel .hidden {
+  display: none;
+}
+
+.troubleshooting-panel .footnote {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.troubleshooting-panel .result-support-note {
+  margin-top: 30px;
+}
+
+.troubleshooting-panel #resultScreen .row {
+  margin-top: 16px;
+}
+
+.troubleshooting-panel .support-form-wrap {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.troubleshooting-panel .support-form {
+  display: grid;
+  gap: 8px;
+}
+
+.troubleshooting-panel .support-form label {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.troubleshooting-panel .support-form input,
+.troubleshooting-panel .support-form textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--ring);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.troubleshooting-panel .support-form input:focus,
+.troubleshooting-panel .support-form textarea:focus {
+  outline: 1px solid var(--accent);
+  border-color: var(--accent);
+}
+
+.troubleshooting-panel .support-form textarea[readonly] {
+  background: #0f1712;
+  color: var(--muted);
+  cursor: default;
 }
 
