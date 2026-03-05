@@ -506,6 +506,10 @@ esp-web-install-button[install-unsupported] .install-button {
   margin-top: 14px;
 }
 
+.troubleshooting-panel #questionTitle {
+  margin-bottom: 18px;
+}
+
 .troubleshooting-panel .option-btn {
   width: 100%;
   justify-content: flex-start;
