@@ -1,5 +1,5 @@
 (function () {
-  const manifestUrl = "manifest.json";
+  const manifestUrl = "manifest-latest.json";
   const modelEl = document.getElementById("fw-model");
   const versionEl = document.getElementById("fw-version");
   const dateEl = document.getElementById("fw-date");
@@ -41,6 +41,12 @@
     }
     if (dateEl) {
       dateEl.textContent = releaseDate || "Unknown";
+    }
+
+    // Update main install button text with version
+    const installBtn = document.getElementById("tg-install");
+    if (installBtn) {
+      installBtn.textContent = `Install TrailGuard ${version} Firmware`;
     }
   }
 

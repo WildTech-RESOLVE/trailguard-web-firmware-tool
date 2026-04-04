@@ -243,6 +243,12 @@ a {
   transform: translateY(1px);
 }
 
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .btn.primary {
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent) inset;
@@ -423,12 +429,325 @@ a {
 
 .install-block {
   display: grid;
-  gap: 18px;
+  gap: 14px;
+  margin-top: 12px;
 }
 
-.install-block .btn {
+.install-block .flasher-console-wrap {
+  margin-top: 22px;
+}
+
+.install-block .note {
+  margin-top: 10px;
+}
+
+.console-advanced-actions .btn {
   width: 100%;
   justify-content: center;
+}
+
+/* Factory Reset toggle states */
+.btn.factory-no {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 1px #ef4444 inset;
+  color: #fca5a5;
+}
+
+.btn.factory-yes {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 1px var(--accent-2) inset;
+  color: #8fe0b7;
+}
+
+/* Version selector section */
+.version-select-section {
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.version-select-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.version-select-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+}
+
+.version-select-row .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Divider between version selector and console */
+.console-divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid var(--ring);
+}
+
+.version-select {
+  padding: 10px 12px;
+  border: 1px solid var(--ring);
+  border-radius: 12px;
+  background: var(--btn);
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239db3a5' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.version-select:hover {
+  background-color: var(--btn-hover);
+}
+
+.version-select:focus {
+  outline: 1px solid var(--accent);
+  border-color: var(--accent);
+}
+
+.version-select option {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.install-main-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+}
+
+.install-main-row .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Main action row buttons — taller than default */
+.install-main-row .btn {
+  padding: 14px 18px;
+}
+
+/* Advanced action buttons inside console collapsible */
+.console-advanced-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid var(--ring);
+}
+
+/* Console toolbar — label + Copy Logs / Clear buttons above the log */
+.flasher-console-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ring);
+}
+
+.flasher-console-toolbar-title {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Status bar — single strip showing current state */
+.status-bar {
+  position: relative;
+  margin: 0;
+  justify-self: center;
+  max-width: 720px;
+  width: 100%;
+  padding: 20px 44px;
+  border-radius: 12px;
+  border: 1px solid var(--ring);
+  background: var(--surface-2);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+/* Indicator dots on both ends */
+.status-bar::before,
+.status-bar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  transition: background 0.2s, box-shadow 0.3s, opacity 0.2s;
+}
+
+.status-bar::before {
+  left: 14px;
+}
+
+.status-bar::after {
+  right: 14px;
+}
+
+.status-bar.waiting {
+  color: var(--muted);
+  border-color: var(--ring);
+}
+
+.status-bar.connected {
+  color: #8fe0b7;
+  border-color: var(--accent-2);
+  background: rgba(31, 122, 83, 0.12);
+}
+
+.status-bar.flashing {
+  color: #93c5fd;
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* Pulsing glow on indicator dots during active operations */
+.status-bar.flashing::before,
+.status-bar.flashing::after {
+  opacity: 1;
+  animation: dot-pulse 1.2s ease-in-out infinite;
+}
+
+.status-bar.erasing {
+  color: #fcd34d;
+  border-color: var(--warn);
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.status-bar.erasing::before,
+.status-bar.erasing::after {
+  opacity: 1;
+  animation: dot-pulse 1.2s ease-in-out infinite;
+}
+
+.status-bar.installed {
+  color: #8fe0b7;
+  border-color: var(--accent-2);
+  background: rgba(31, 122, 83, 0.18);
+}
+
+.status-bar.installed::before,
+.status-bar.installed::after {
+  opacity: 1;
+}
+
+.status-bar.erased {
+  color: #fcd34d;
+  border-color: var(--warn);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.status-bar.failed {
+  color: #fca5a5;
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.status-bar.failed::before,
+.status-bar.failed::after {
+  opacity: 1;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.flasher-console-wrap {
+  border: 1px solid var(--ring);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--code);
+}
+
+/* Collapsible <details> — hide default triangle */
+details.flasher-console-wrap > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details.flasher-console-wrap > summary::-webkit-details-marker {
+  display: none;
+}
+
+.flasher-console-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ring);
+  user-select: none;
+}
+
+details.flasher-console-wrap:not([open]) .flasher-console-header {
+  border-bottom: none;
+}
+
+.flasher-console-title {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.flasher-console-title::before {
+  content: "\25B6";
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 0.7rem;
+  transition: transform 0.15s ease;
+}
+
+details.flasher-console-wrap[open] .flasher-console-title::before {
+  transform: rotate(90deg);
+}
+
+.flasher-console-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-console {
+  padding: 4px 10px;
+  border: 1px solid var(--ring);
+  border-radius: 6px;
+  background: var(--btn);
+  color: var(--muted);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-console:hover {
+  background: var(--btn-hover);
+  color: var(--text);
+}
+
+.flasher-console {
+  margin: 0;
+  min-height: 220px;
+  max-height: 320px;
+  padding: 12px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #b9d5c2;
 }
 
 .code-block {

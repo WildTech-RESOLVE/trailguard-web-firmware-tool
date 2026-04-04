@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TrailGuard Firmware Installer</title>
   <link rel="stylesheet" href="assets/css/styles.css">
-  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <script type="module" src="assets/js/install-esptool.js"></script>
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/troublshooting.js"></script>
 </head>
@@ -37,26 +37,47 @@
         <h1>Install the Latest TrailGuard Firmware</h1>
         <ol class="checklist ordered">
           <li>Connect the Communications Unit to your computer with a Micro-USB data cable. Insert the setup magnet into the slot next to the camera to activate Setup Mode. Both SIG.1 and SIG.2 LEDs should illuminate.</li>
-          <li>Click the "Install" button below, grant Web Serial permissions, and select the correct serial port (it should look like 'USB JTAG/serial...').</li>
-          <li>Tick “Erase device” if you want to reset all saved settings and statistics to factory defaults.</li>
-          <li>Monitor the progress dialog and wait for the flashing process to finish. Do not disconnect until the success message appears.</li>
-          <li>After the update completes, confirm the camera reboots and re-enters Setup Mode. Remove the setup magnet and trigger the camera again to enter normal operation.</li>
+          <li>Click "Install Firmware" and select the serial port (look for 'USB JTAG/serial...' or 'COM1'). Toggle "Factory Reset" to erase all data before installation.</li>
+          <li>Open "Advanced Options" to install a specific firmware version, erase the device manually, reboot after installation, or view the logs console.</li>
+          <li>Wait for the status bar to confirm completion before unplugging the device.</li>
         </ol>
         <div class="install-block">
-          <esp-web-install-button
-            id="installer"
-            manifest="manifest.json"
-            class="install-button"
-          >
-            <button slot="activate" class="btn primary">Install TrailGuard v2.0.0 Firmware</button>
-            <div slot="unsupported" class="note warn">
-              Web Serial not supported. Please open this page in the desktop version of Google Chrome or Microsoft Edge.
+          <p id="tg-status" class="status-bar waiting">Waiting to connect</p>
+          <div class="install-main-row">
+            <button id="tg-factory-reset" type="button" class="btn factory-no">Factory Reset: NO</button>
+            <button id="tg-install" type="button" class="btn primary install-main-btn">Install TrailGuard v2.0.0 Firmware</button>
+          </div>
+          <details id="tg-console-details" class="flasher-console-wrap">
+            <summary class="flasher-console-header">
+              <span class="flasher-console-title">Advanced Options</span>
+            </summary>
+            <div class="console-advanced-actions">
+              <button id="tg-erase" type="button" class="btn">Erase Device Only</button>
+              <button id="tg-reboot" type="button" class="btn">Reboot Device</button>
             </div>
-            <div slot="not-allowed" class="note warn">
-              Secure context required. Use the HTTPS version of this site to continue.
+            <div class="version-select-section">
+              <span class="version-select-label">Install by Firmware Version:</span>
+              <div class="version-select-row">
+                <select id="tg-version-select" class="version-select">
+                  <option value="firmware/manifest-v2.0.0.json">v2.0.0 (Latest)</option>
+                  <option value="firmware/manifest-v2.0.0-diagnostic.json">v2.0.0-diagnostic</option>
+                  <option value="firmware/manifest-v1.8.7.json">v1.8.7</option>
+                </select>
+                <button id="tg-version-factory-reset" type="button" class="btn factory-no">Factory Reset: NO</button>
+                <button id="tg-version-install" type="button" class="btn">Install</button>
+              </div>
             </div>
-          </esp-web-install-button>
-            <div class="note info">
+            <hr class="console-divider">
+            <div class="flasher-console-toolbar">
+              <span class="flasher-console-toolbar-title">Logs Console</span>
+              <span class="flasher-console-actions">
+                <button id="tg-copy-log" type="button" class="btn-console" title="Copy logs to clipboard">Copy Logs</button>
+                <button id="tg-clear-log" type="button" class="btn-console" title="Clear console">Clear</button>
+              </span>
+            </div>
+            <pre id="tg-console" class="flasher-console" aria-live="polite"></pre>
+          </details>
+          <div class="note info">
             <p>Tips:</p>
             <ul class="note-list">
               <li>Please use <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong> on a desktop computer for Web Serial compatibility.</li>
@@ -84,11 +105,6 @@
           </div>
           <div class="version-actions">
             <a class="btn" href="firmware/TrailGuard_CCU_2.0.0.bin" download>Download v2.0.0</a>
-            <esp-web-install-button class="inline-install" manifest="firmware/manifest-v2.0.0-app.json">
-              <button slot="activate" class="btn secondary">Install</button>
-              <span slot="unsupported" class="inline-warning">Use Chrome or Edge on desktop to install firmware.</span>
-              <span slot="not-allowed" class="inline-warning">Open this site over HTTPS to install firmware.</span>
-            </esp-web-install-button>
           </div>
           <div class="version-notes">
             <p>Release Notes:</p>
@@ -108,11 +124,6 @@
           </div>
           <div class="version-actions">
             <a class="btn" href="firmware/TrailGuard_CCU_2.0.0-diagnostic.bin" download>Download v2.0.0-diagnostic</a>
-            <esp-web-install-button class="inline-install" manifest="firmware/manifest-v2.0.0-diagnostic-app.json">
-              <button slot="activate" class="btn secondary">Install</button>
-              <span slot="unsupported" class="inline-warning">Use Chrome or Edge on desktop to install firmware.</span>
-              <span slot="not-allowed" class="inline-warning">Open this site over HTTPS to install firmware.</span>
-            </esp-web-install-button>
           </div>
           <div class="version-notes">
             <p>Release Notes:</p>
@@ -127,11 +138,6 @@
           </div>
           <div class="version-actions">
             <a class="btn" href="firmware/TrailGuard_CCU_1.8.7.bin" download>Download v1.8.7</a>
-            <esp-web-install-button class="inline-install" manifest="firmware/manifest-v1.8.7-app.json">
-              <button slot="activate" class="btn secondary">Install</button>
-              <span slot="unsupported" class="inline-warning">Use Chrome or Edge on desktop to install firmware.</span>
-              <span slot="not-allowed" class="inline-warning">Open this site over HTTPS to install firmware.</span>
-            </esp-web-install-button>
           </div>
           <div class="version-notes">
             <p>Release Notes:</p>
@@ -234,7 +240,7 @@
 
   <footer class="footer">
     <span>TrailGuard Web Firmware Installer</span>
-    <span><a href="https://esphome.github.io/esp-web-tools/">Powered by ESP Web Tools</a></span>
+    <span><a href="https://github.com/espressif/esptool-js">Powered by esptool-js</a></span>
   </footer>
 </body>
 </html>
