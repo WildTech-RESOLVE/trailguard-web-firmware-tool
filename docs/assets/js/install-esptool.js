@@ -181,7 +181,7 @@ function fileNameFromPath(path) {
 
 function terminalAdapter() {
   return {
-    clean() { clearConsole(); },
+    clean() { /* no-op — preserve logs across reconnects */ },
     writeLine(data) { appendLine(String(data ?? "")); },
     write(data) { appendConsole(String(data ?? "")); },
   };
