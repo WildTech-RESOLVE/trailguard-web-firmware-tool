@@ -16,7 +16,7 @@
   --btn: #132017;
   --btn-hover: #192a21;
   --code: #111b15;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  font-family: var(--font-sans);
   font-size: 16px;
 }
 
@@ -56,48 +56,98 @@ a {
   display: flex;
   align-items: center;
   gap: 14px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.brand:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 720px) {
+  .appbar {
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .nav {
+    gap: 2px;
+    margin-left: -8px;
+  }
+
+  .nav-link {
+    padding: 8px 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
 }
 
 .brand-logo {
   width: 40px;
   height: 40px;
-  border-radius: 12px;
   object-fit: contain;
-  background: var(--surface-2);
-  padding: 4px;
+  background: transparent;
 }
 
 .brand-name {
-  font-size: 1.15rem;
-  font-weight: 600;
-}
-
-.brand-tagline {
-  font-size: 0.85rem;
-  color: var(--muted);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 4vw, 1.22rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tg-cream);
 }
 
 .nav {
   display: flex;
-  gap: 12px;
+  gap: 2px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .nav-link {
-  padding: 8px 14px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  transition: background 0.15s ease, border 0.15s ease;
+  position: relative;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px 6px 0 0;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.18s ease;
 }
 
 .nav-link:hover {
-  background: var(--btn-hover);
-  border-color: var(--ring);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .nav-link.active {
-  background: var(--btn-hover);
-  border-color: var(--ring);
+  color: var(--tg-cream);
+  background: rgba(255, 122, 0, 0.06);
+}
+
+.nav-link.active::after {
+  transform: scaleX(1);
 }
 
 .panel-hidden {
@@ -105,11 +155,22 @@ a {
 }
 
 .wrap {
-  max-width: 1080px;
+  max-width: 964px;
   margin: 0 auto;
-  padding: 28px 20px 40px;
+  padding: 28px 32px 56px;
   display: grid;
   gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 22px 18px 56px;
+  }
+}
+
+.setup-loading {
+  margin: 40px 0;
+  color: var(--muted);
 }
 
 .hero {
@@ -128,16 +189,13 @@ a {
 }
 
 .hero-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 30px;
+  padding: 0;
   display: grid;
   gap: 24px;
 }
 
 .hero-card.primary {
-  background: var(--surface);
+  background: transparent;
 }
 
 .hero-card.secondary {
@@ -147,8 +205,13 @@ a {
 
 .hero-card h1 {
   margin: 0;
-  font-size: 1.7rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 2.3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  line-height: 1.12;
+  color: var(--tg-cream);
 }
 
 .hero-card h2 {
@@ -177,6 +240,7 @@ a {
   counter-reset: step;
   list-style: none;
   padding-left: 0;
+  margin-top: 16px;
 }
 
 .checklist.ordered li {
@@ -185,21 +249,29 @@ a {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: start;
-  gap: 12px;
+  gap: 14px;
+  line-height: 1.6;
 }
 
+/* Numbered steps use the setup-guide circle style: a filled orange disc
+   with the step number, matching the guide's "Powering up" steps. */
 .checklist.ordered li::before {
   counter-increment: step;
-  content: "Step " counter(step);
-  background: var(--btn);
-  border: 1px solid var(--ring);
+  content: counter(step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
-  text-transform: capitalize;
-  color: var(--muted);
-  box-shadow: inset 0 0 0 1px rgba(255, 122, 0, 0.1);
+  background: var(--accent);
+  color: #0b0f0c;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex: none;
+  /* center the disc on the first line of the step text
+     (list item is 1rem with line-height 1.6 => first line is 1.6rem tall) */
+  margin-top: calc((1.6rem - 32px) / 2);
 }
 
 .meta-row {
@@ -218,6 +290,19 @@ a {
 
 .meta-item span:last-child {
   font-weight: 600;
+}
+
+#fw-version,
+#fw-date {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+}
+
+.version-header small {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .btn {
@@ -292,28 +377,33 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 2px 10px;
+  padding: 3px 11px;
   border-radius: 999px;
   border: 1px solid var(--ring);
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
-  text-transform: capitalize;
+  font-family: var(--font-display);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--muted);
   margin-right: 10px;
 }
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
+  padding: 0;
   display: grid;
   gap: 16px;
 }
 
 .card h2 {
   margin: 0;
-  font-size: 1.3rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  line-height: 1.15;
+  color: var(--tg-cream);
 }
 
 .button-row {
@@ -703,15 +793,13 @@ details.flasher-console-wrap:not([open]) .flasher-console-header {
   color: var(--muted);
 }
 
-.flasher-console-title::before {
-  content: "\25B6";
-  display: inline-block;
+.console-chevron {
+  display: inline-flex;
   margin-right: 8px;
-  font-size: 0.7rem;
   transition: transform 0.15s ease;
 }
 
-details.flasher-console-wrap[open] .flasher-console-title::before {
+details.flasher-console-wrap[open] .console-chevron {
   transform: rotate(90deg);
 }
 
@@ -744,7 +832,7 @@ details.flasher-console-wrap[open] .flasher-console-title::before {
   overflow: auto;
   white-space: pre-wrap;
   word-break: break-word;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   line-height: 1.45;
   color: #b9d5c2;
@@ -757,7 +845,7 @@ details.flasher-console-wrap[open] .flasher-console-title::before {
   border-radius: 12px;
   padding: 14px;
   overflow-x: auto;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: 0.9rem;
   color: var(--text);
 }
@@ -767,7 +855,7 @@ details.flasher-console-wrap[open] .flasher-console-title::before {
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  padding: 18px;
+  padding: 24px 18px;
   border-top: 1px solid var(--border);
   background: rgba(16, 24, 19, 0.85);
   font-size: 0.85rem;
@@ -776,6 +864,72 @@ details.flasher-console-wrap[open] .flasher-console-title::before {
 
 .footer a {
   color: var(--accent);
+}
+
+.footer-variant {
+  width: 100%;
+}
+
+.footer-variant[hidden] {
+  display: none;
+}
+
+.footer-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.footer-guide {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px 28px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.footer-guide-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-guide-brand img {
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+.footer-guide-title {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.footer-guide-contact {
+  color: #8ba295;
+  font-size: 0.92rem;
+  margin-top: 8px;
+}
+
+.footer-guide-contact a {
+  color: var(--accent);
+}
+
+.footer-guide-note {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #8ba295;
+}
+
+@media (max-width: 640px) {
+  .footer-guide-note {
+    margin-left: 0;
+  }
 }
 
 esp-web-install-button {
@@ -850,7 +1004,12 @@ esp-web-install-button[install-unsupported] .install-button {
 }
 
 .troubleshooting-panel .result-block h3 {
-  font-size: 0.95rem;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #a9c6b3;
   margin-bottom: 8px;
 }
 
@@ -921,5 +1080,12 @@ esp-web-install-button[install-unsupported] .install-button {
   background: #0f1712;
   color: var(--muted);
   cursor: default;
+}
+
+@media print {
+  .appbar,
+  .footer {
+    display: none;
+  }
 }
 

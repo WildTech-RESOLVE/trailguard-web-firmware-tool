@@ -4,12 +4,47 @@
   const versionEl = document.getElementById("fw-version");
   const dateEl = document.getElementById("fw-date");
   const navLinks = Array.from(document.querySelectorAll(".nav-link[data-panel]"));
-  const panelIds = ["install", "download", "troubleshooting"];
+  const brandLink = document.querySelector(".brand[data-panel]");
+  const panelIds = ["setup", "install", "download", "troubleshooting"];
+  // Which footer variant each tab shows: the guide/troubleshooting tabs get the
+  // support-contact footer, the firmware tabs keep the esptool-js credit.
+  const footerByPanel = {
+    setup: "guide",
+    install: "tools",
+    download: "tools",
+    troubleshooting: "guide",
+  };
 
   document.addEventListener("DOMContentLoaded", () => {
     loadManifest();
     initTabs();
+    loadSetupGuide();
   });
+
+  function loadSetupGuide() {
+    const panel = document.getElementById("setup");
+    if (!panel) {
+      return;
+    }
+    fetch("setupguide-content.html", { cache: "no-store" })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+        return res.text();
+      })
+      .then((html) => {
+        panel.innerHTML = html;
+        if (window.TGSetupGuide) {
+          window.TGSetupGuide.init(panel);
+        }
+      })
+      .catch((err) => {
+        console.warn("Failed to load setup guide", err);
+        panel.innerHTML =
+          '<p class="muted">Could not load the setup guide. Please refresh the page to try again.</p>';
+      });
+  }
 
   function loadManifest() {
     fetch(manifestUrl, { cache: "no-store" })
@@ -77,6 +112,15 @@
       });
     });
 
+    // Clicking the brand logo/name returns to the default Set Up Guide tab.
+    if (brandLink) {
+      brandLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        setActivePanel("setup", true);
+        window.scrollTo({ top: 0 });
+      });
+    }
+
     window.addEventListener("hashchange", () => {
       const hashPanel = window.location.hash.replace("#", "");
       if (!panelIds.includes(hashPanel)) {
@@ -91,7 +135,7 @@
     if (panelIds.includes(hashPanel)) {
       return hashPanel;
     }
-    return "install";
+    return "setup";
   }
 
   function setActivePanel(panelId, updateHash) {
@@ -105,6 +149,11 @@
 
     navLinks.forEach((link) => {
       link.classList.toggle("active", link.dataset.panel === panelId);
+    });
+
+    const footerKind = footerByPanel[panelId] || "tools";
+    document.querySelectorAll(".footer-variant").forEach((el) => {
+      el.hidden = el.dataset.footer !== footerKind;
     });
 
     if (updateHash && window.location.hash !== `#${panelId}`) {

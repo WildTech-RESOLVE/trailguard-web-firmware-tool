@@ -325,6 +325,22 @@ async function hardResetKeepPort() {
  * calls ESPLoader.main() again.
  */
 async function reconnectBootloader() {
+  // Put device into bootloader first (stops firmware serial output)
+  // before tearing down the transport — avoids flooding the serial buffer.
+  if (activeTransport) {
+    try {
+      await activeTransport.setDTR(false);
+      await activeTransport.setRTS(true);
+      await sleep(100);
+      await activeTransport.setDTR(true);
+      await activeTransport.setRTS(false);
+      await sleep(100);
+      await activeTransport.setDTR(false);
+    } catch {
+      // Ignore — transport may already be in a bad state
+    }
+    await sleep(500);
+  }
   await closeConnection();
   await sleep(RETRY_DELAY_MS);
   return await openConnection();

@@ -3,31 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TrailGuard Firmware Installer</title>
+  <title>TrailGuard Web Tools</title>
   <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Shuttleblock-700.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="assets/css/tg-design-system.css">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/setupguide.css">
   <script type="module" src="assets/js/install-esptool.js"></script>
+  <script defer src="assets/js/setupguide.js"></script>
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/troublshooting.js"></script>
 </head>
 <body>
   <header class="appbar">
-    <div class="brand">
+    <a class="brand" href="#setup" data-panel="setup" aria-label="TrailGuard — return to Set Up Guide">
       <img class="brand-logo" src="assets/images/logo.png" alt="TrailGuard logo">
-      <div>
-        <div class="brand-name">TrailGuard</div>
-        <div class="brand-tagline">Web Firmware Installer</div>
-      </div>
-    </div>
+      <span class="brand-name">TrailGuard Support Tools</span>
+    </a>
     <nav class="nav">
-      <a class="nav-link active" href="#install" data-panel="install">Install</a>
+      <a class="nav-link active" href="#setup" data-panel="setup">Set Up Guide</a>
+      <a class="nav-link" href="#install" data-panel="install">Firmware Update</a>
       <a class="nav-link" href="#download" data-panel="download">Download</a>
       <a class="nav-link" href="#troubleshooting" data-panel="troubleshooting">Troubleshooting</a>
     </nav>
   </header>
 
   <main class="wrap">
-    <section class="hero panel" id="install">
+    <section class="panel" id="setup">
+      <p class="setup-loading">Loading setup guide…</p>
+    </section>
+
+    <section class="hero panel panel-hidden" id="install">
       <div class="hero-card primary">
         <div class="meta-row" id="firmware-meta">
           <div class="meta-item"><span class="pill">Model</span><span id="fw-model">TrailGuard 4B</span></div>
@@ -50,7 +58,7 @@
           </div>
           <details id="tg-console-details" class="flasher-console-wrap">
             <summary class="flasher-console-header">
-              <span class="flasher-console-title">Advanced Options</span>
+              <span class="flasher-console-title"><span class="console-chevron"><svg viewBox="0 0 8 12" width="7" height="10" aria-hidden="true"><path d="M1.5 1l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span>Advanced Options</span>
             </summary>
             <div class="console-advanced-actions">
               <button id="tg-erase" type="button" class="btn">Erase Device Only</button>
@@ -240,8 +248,20 @@
   </main>
 
   <footer class="footer">
-    <span>TrailGuard Web Firmware Installer</span>
-    <span><a href="https://github.com/espressif/esptool-js">Powered by esptool-js</a></span>
+    <div class="footer-variant footer-tools" data-footer="tools">
+      <span>TrailGuard Web Tools</span>
+      <span><a href="https://github.com/espressif/esptool-js">Powered by esptool-js</a></span>
+    </div>
+    <div class="footer-variant footer-guide" data-footer="guide" hidden>
+      <div class="footer-guide-brand">
+        <img src="assets/images/setupguide/01-trailguard.png" alt="TrailGuard" width="30" height="30">
+        <div>
+          <div class="footer-guide-title">Questions? We're here to help.</div>
+          <div class="footer-guide-contact">Contact <a href="mailto:alee@nightjar.tech">alee@nightjar.tech</a> &nbsp;·&nbsp; <a href="https://www.nightjar.tech">www.nightjar.tech</a></div>
+        </div>
+      </div>
+      <div class="footer-guide-note">Thank you for protecting wildlife.</div>
+    </div>
   </footer>
 </body>
 </html>

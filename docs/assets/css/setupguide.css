@@ -1,0 +1,149 @@
+/* Setup guide panel — scoped styles for the content in setupguide-content.html
+   (extracted from the colleague's bundled setupguide.html export). */
+
+.tg-doc h1, .tg-doc h2, .tg-doc h3, .tg-doc p, .tg-doc ul, .tg-doc ol, .tg-doc li {
+  margin: 0;
+}
+.tg-doc ul, .tg-doc ol {
+  list-style: none;
+  padding: 0;
+}
+.tg-doc a {
+  color: #ff7a00;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 122, 0, 0.35);
+}
+.tg-doc a:hover {
+  border-color: #ff7a00;
+}
+.tg-fig {
+  cursor: zoom-in;
+}
+.tg-fig img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+/* Image frames hug the image exactly — the box matches the image's natural
+   size (no fixed-height letterboxing), the full image always shows, and the
+   frame has square corners. Overrides the design-tool export's inline heights,
+   radii, and letterbox backgrounds. */
+#setup .tg-fig {
+  height: auto !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+#setup .tg-fig img {
+  height: auto !important;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* LED demo animations */
+@keyframes ledFlash { 0%, 100% { opacity: 1; } 50% { opacity: 0.22; } }
+@keyframes ledBlink { 0%, 58% { opacity: 1; } 70%, 100% { opacity: 0.12; } }
+@keyframes ledFlashBlue { 0% { opacity: 1; } 9% { opacity: 0.12; } 100% { opacity: 0.12; } }
+@keyframes ledFlashGreen { 0% { opacity: 1; } 18% { opacity: 1; } 26% { opacity: 0.12; } 100% { opacity: 0.12; } }
+
+/* Figure lightbox (vanilla port of the guide's zoom overlay) */
+.tg-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(6, 9, 7, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  cursor: zoom-out;
+}
+.tg-zoom-overlay[hidden] {
+  display: none;
+}
+.tg-zoom-overlay img {
+  max-width: 94vw;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+.tg-zoom-hint {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9db3a5;
+}
+
+/* LED demo play/stop button icons */
+#tg-led-play .tg-led-icon-play,
+#tg-led-play .tg-led-icon-stop {
+  display: inline-flex;
+}
+#tg-led-play [hidden] {
+  display: none;
+}
+
+/* Table-of-contents rows scroll to their section on click. */
+.tg-toc-link {
+  cursor: pointer;
+}
+
+.tg-toc-link span:last-child {
+  transition: color 0.15s ease;
+}
+
+.tg-toc-link:hover span:last-child {
+  color: #fff;
+}
+
+.tg-toc-link:focus-visible {
+  outline: 2px solid var(--tg-orange-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Offset section anchors so they clear the sticky app bar when scrolled to. */
+#setup section[id^="sg-"] {
+  scroll-margin-top: 90px;
+}
+
+@media (max-width: 720px) {
+  #setup section[id^="sg-"] {
+    scroll-margin-top: 16px;
+  }
+}
+
+/* The guide's layout grids are inline styles from the design-tool export;
+   collapse them to a single column on narrow screens. */
+@media (max-width: 680px) {
+  #setup [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+  #setup .tg-fig {
+    height: auto !important;
+    max-height: 420px;
+  }
+}
+
+@media print {
+  html, body {
+    background: #fff;
+  }
+  .tg-controls {
+    display: none !important;
+  }
+  .tg-doc {
+    background: #fff !important;
+    color: #1a1a1a !important;
+  }
+  .tg-print-flip {
+    color: #141414 !important;
+  }
+}

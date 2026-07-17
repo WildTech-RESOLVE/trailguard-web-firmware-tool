@@ -1,0 +1,391 @@
+<div class="tg-doc" style="color:#bccabf;font-family:var(--font-sans);font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased">
+
+<div style="padding:0 0 90px">
+
+  <!-- ============ HEADER / COVER ============ -->
+  <header style="padding:8px 0 6px">
+    <div style="position:relative;border:1.5px solid #ff7a00;border-radius:8px;padding:34px 32px 36px;background:linear-gradient(180deg,rgba(255,122,0,.06),transparent 55%)">
+      <span style="position:absolute;top:-13px;left:24px;display:inline-block;background:#ff7a00;color:#0b0f0c;font-family:'Shuttleblock',var(--font-sans);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px 5px;line-height:1;border-radius:3px">TrailGuard 4 - Cellular</span>
+      <h1 class="tg-print-flip" style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:clamp(34px,6vw,58px);line-height:1.0;letter-spacing:-.01em;color:#fbf8ec;margin-top:6px">Quick Setup Guide</h1>
+      <div style="font-family:'Shuttleblock',var(--font-sans);font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:#a9c6b3;font-size:13px;margin-top:18px">Camera &amp; Communications Unit</div>
+      <p style="color:#bccabf;margin-top:16px;max-width:52ch;font-size:1.02rem">Everything you need to power up, configure, and deploy your TrailGuard unit in the field.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:22px;font-size:13px;color:#8ba295;font-variant-numeric:tabular-nums">
+        <span>Rev. July 2026</span>
+        <span>Platform <b style="color:#e8efe9;font-weight:600">v1.8.0</b></span>
+        <span>CCU <b style="color:#e8efe9;font-weight:600">v2.0.0</b></span>
+      </div>
+    </div>
+
+    <!-- TOC -->
+    <div style="margin-top:34px;border-top:1px solid rgba(232,239,233,.14);padding-top:6px">
+      <div style="font-family:'Shuttleblock',var(--font-sans);font-weight:500;letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:#ff7a00;padding:16px 0 10px">In this guide</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 40px">
+        <ul style="font-size:0.95rem">
+          <li class="tg-toc-link" data-target="sg-01" style="display:flex;gap:14px;padding:8px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">01</span><span style="color:#dde6df">What's in the box</span></li>
+          <li class="tg-toc-link" data-target="sg-02" style="display:flex;gap:14px;padding:8px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">02</span><span style="color:#dde6df">Component overview</span></li>
+          <li class="tg-toc-link" data-target="sg-03" style="display:flex;gap:14px;padding:8px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">03</span><span style="color:#dde6df">Powering up</span></li>
+          <li class="tg-toc-link" data-target="sg-04" style="display:flex;gap:14px;padding:8px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">04</span><span style="color:#dde6df">Triggering the camera</span></li>
+          <li class="tg-toc-link" data-target="sg-05" style="display:flex;gap:14px;padding:8px 0"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">05</span><span style="color:#dde6df">Real-time transmission</span></li>
+        </ul>
+        <ul style="font-size:0.95rem">
+          <li class="tg-toc-link" data-target="sg-06" style="display:flex;gap:14px;padding:8px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">06</span><span style="color:#dde6df">Battery &amp; SD card</span></li>
+          <li class="tg-toc-link" data-target="sg-07" style="display:flex;gap:14px;padding:8px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">07</span><span style="color:#dde6df">Setup Mode</span></li>
+          <li class="tg-toc-link" data-target="sg-08" style="display:flex;gap:14px;padding:8px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">08</span><span style="color:#dde6df">Nightjar IQ Dashboard</span></li>
+          <li class="tg-toc-link" data-target="sg-09" style="display:flex;gap:14px;padding:8px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">09</span><span style="color:#dde6df">Deployment tips</span></li>
+          <li class="tg-toc-link" data-target="sg-10" style="display:flex;gap:14px;padding:8px 0"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">10</span><span style="color:#dde6df">Pre-deployment checklist</span></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 01 WHAT'S IN THE BOX ============ -->
+  <section id="sg-01" style="margin-top:58px">
+    <div style="border-bottom:1px solid rgba(232,239,233,.14);padding-bottom:14px;margin-bottom:22px">
+      <h2 class="tg-print-flip" style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:1.7rem;letter-spacing:.005em;color:#fbf8ec;line-height:1.05;margin-top:9px"><span style="color:#ff7a00;margin-right:14px;font-variant-numeric:tabular-nums">01</span>What's in the box</h2>
+    </div>
+    <p style="color:#bccabf">Unpack and confirm all components before heading into the field. Your TrailGuard kit includes the camera unit, power, connectivity, and mounting hardware shown below.</p>
+
+    <!-- combined single box photo, portrait/vertical stack, with kit-list annotation retained -->
+    <div class="tg-fig" style="margin-top:24px;height:430px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813">
+      <img src="assets/images/setupguide/02-trailguard-components-in-box.jpg" alt="TrailGuard components in box">
+    </div>
+
+    <div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:0 36px">
+      <ul style="font-size:0.97rem">
+        <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>TrailGuard camera &amp; communications unit</span></li>
+        <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>32&nbsp;GB microSD card</span></li>
+        <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>3.7V rechargeable Li-ion battery</span></li>
+        <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Battery charger</span></li>
+        <li style="display:flex;gap:12px;padding:9px 0"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Cellular antenna ×2</span></li>
+      </ul>
+      <ul style="font-size:0.97rem">
+        <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Mounting bracket &amp; zip ties</span></li>
+        <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Setup Mode magnet</span></li>
+        <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>SD card removal tweezer</span></li>
+        <li style="display:flex;gap:12px;padding:9px 0"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Extra screws &amp; silica gel pack</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 02 COMPONENT OVERVIEW ============ -->
+  <section id="sg-02" style="margin-top:58px">
+    <div style="border-bottom:1px solid rgba(232,239,233,.14);padding-bottom:14px;margin-bottom:22px">
+      <h2 class="tg-print-flip" style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:1.7rem;letter-spacing:.005em;color:#fbf8ec;line-height:1.05;margin-top:9px"><span style="color:#ff7a00;margin-right:14px;font-variant-numeric:tabular-nums">02</span>Component overview</h2>
+    </div>
+    <p style="color:#bccabf">The camera and communications unit are camouflaged to enhance concealment in the field. Familiarize yourself with each labelled component before installation.</p>
+
+    <div class="tg-fig" style="margin-top:24px;height:560px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813">
+      <img src="assets/images/setupguide/03-annotated-component-overview.jpg" alt="Annotated component overview">
+    </div>
+  </section>
+
+  <!-- ============ 03 POWERING UP ============ -->
+  <section id="sg-03" style="margin-top:58px">
+    <div style="border-bottom:1px solid rgba(232,239,233,.14);padding-bottom:14px;margin-bottom:22px">
+      <h2 class="tg-print-flip" style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:1.7rem;letter-spacing:.005em;color:#fbf8ec;line-height:1.05;margin-top:9px"><span style="color:#ff7a00;margin-right:14px;font-variant-numeric:tabular-nums">03</span>Powering up</h2>
+    </div>
+
+    <!-- step 1 (enlarged: portrait annotated interior) -->
+    <div style="margin-top:26px;break-inside:avoid">
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="width:34px;height:34px;border-radius:999px;background:#ff7a00;color:#0b0f0c;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none">1</span>
+        <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1.15rem;font-weight:500;text-transform:uppercase;letter-spacing:.02em;color:#a9c6b3">Open the communications unit</h3>
+      </div>
+      <p style="color:#bccabf;margin-top:10px;padding-left:46px;max-width:52ch">Unscrew and lift the cover to expose the SIM slot, battery bay, and antenna connectors.</p>
+      <div class="tg-fig" style="margin:16px auto 0;max-width:460px;height:600px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/04-interior-of-communications-unit-battery-.jpg" alt="Interior of communications unit — battery connector, SIM card slot, battery"></div>
+    </div>
+
+    <!-- step 2 -->
+    <div style="display:grid;grid-template-columns:300px 1fr;gap:28px;margin-top:26px;align-items:center;break-inside:avoid">
+      <div class="tg-fig" style="height:200px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/05-insert-sim-card.jpg" alt="Insert SIM card"></div>
+      <div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="width:34px;height:34px;border-radius:999px;background:#ff7a00;color:#0b0f0c;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none">2</span>
+          <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1.15rem;font-weight:500;text-transform:uppercase;letter-spacing:.02em;color:#a9c6b3">Insert the SIM card</h3>
+        </div>
+        <p style="color:#bccabf;margin-top:10px;padding-left:46px">Slide the activated SIM into the holder until it seats fully. Ensure it has an active data plan for real-time transmission.</p>
+      </div>
+    </div>
+
+    <!-- step 3 -->
+    <div style="display:grid;grid-template-columns:1fr 300px;gap:28px;margin-top:26px;align-items:center;break-inside:avoid">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="width:34px;height:34px;border-radius:999px;background:#ff7a00;color:#0b0f0c;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none">3</span>
+          <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1.15rem;font-weight:500;text-transform:uppercase;letter-spacing:.02em;color:#a9c6b3">Tighten the antenna</h3>
+        </div>
+        <p style="color:#bccabf;margin-top:10px;padding-left:46px">Hand-tighten both cellular antennas onto the SMA connectors. A loose antenna degrades signal and transmission reliability.</p>
+      </div>
+      <div class="tg-fig" style="height:200px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/06-tighten-antenna-at-sma-connector.jpg" alt="Tighten antenna at SMA connector"></div>
+    </div>
+
+    <!-- step 4 -->
+    <div style="display:grid;grid-template-columns:300px 1fr;gap:28px;margin-top:26px;align-items:center;break-inside:avoid">
+      <div class="tg-fig" style="height:200px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/07-connect-the-battery.jpg" alt="Connect the battery"></div>
+      <div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="width:34px;height:34px;border-radius:999px;background:#ff7a00;color:#0b0f0c;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none">4</span>
+          <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1.15rem;font-weight:500;text-transform:uppercase;letter-spacing:.02em;color:#a9c6b3">Connect the battery</h3>
+        </div>
+        <p style="color:#bccabf;margin-top:10px;padding-left:46px">Align the connector orientation with the tab, then push down fully to secure the connection. The unit powers on immediately.</p>
+      </div>
+    </div>
+
+    <!-- step 5 -->
+    <div style="display:flex;align-items:center;gap:12px;margin-top:26px;flex-wrap:wrap;break-inside:avoid">
+      <span style="width:34px;height:34px;border-radius:999px;background:#ff7a00;color:#0b0f0c;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none">5</span>
+      <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1.15rem;font-weight:500;text-transform:uppercase;letter-spacing:.02em;color:#a9c6b3">Close up</h3>
+      <p style="color:#bccabf;margin-left:8px">Refit the cover and tighten all screws to maintain the weatherproof seal.</p>
+    </div>
+  </section>
+
+  <!-- ============ 04 TRIGGERING ============ -->
+  <section id="sg-04" style="margin-top:58px">
+    <div style="border-bottom:1px solid rgba(232,239,233,.14);padding-bottom:14px;margin-bottom:22px">
+      <h2 class="tg-print-flip" style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:1.7rem;letter-spacing:.005em;color:#fbf8ec;line-height:1.05;margin-top:9px"><span style="color:#ff7a00;margin-right:14px;font-variant-numeric:tabular-nums">04</span>Triggering the camera</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 320px;gap:30px;align-items:start">
+      <div>
+        <p style="color:#bccabf;max-width:44ch">Once the battery is connected, movement in front of the motion sensor triggers the camera. Each trigger captures <strong style="color:#e8efe9">four consecutive images</strong>, which the onboard AI evaluates instantly.</p>
+
+        <div style="margin-top:22px;display:grid;gap:14px">
+          <div style="display:flex;align-items:stretch;border:1px solid rgba(232,239,233,.10);border-radius:12px;overflow:hidden;break-inside:avoid">
+            <div style="background:#0b0f0c;padding:16px 20px;display:flex;align-items:center;flex:none;border-right:1px solid rgba(232,239,233,.08)">
+              <svg viewBox="0 0 60 60" style="width:52px;height:52px"><rect x="12" y="8" width="36" height="44" rx="10" fill="#182219" stroke="#2c3f34" stroke-width="2"></rect><g style="animation:ledFlashBlue 2.5s ease-in-out infinite"><circle cx="30" cy="30" r="7" fill="#2a6fdb"></circle><circle cx="30" cy="30" r="13" fill="#2a6fdb" opacity="0.25"></circle></g></svg>
+            </div>
+            <div style="padding:14px 16px;display:flex;flex-direction:column;justify-content:center;background:#101813"><div style="font-weight:600;color:#e8efe9">Blue — no detection</div><div style="color:#8ba295;font-size:0.92rem;margin-top:2px">AI found no target of interest. The camera returns to standby.</div></div>
+          </div>
+          <div style="display:flex;align-items:stretch;border:1px solid rgba(42,148,104,.35);border-radius:12px;overflow:hidden;break-inside:avoid">
+            <div style="background:#0b0f0c;padding:16px 20px;display:flex;align-items:center;flex:none;border-right:1px solid rgba(232,239,233,.08)">
+              <svg viewBox="0 0 60 60" style="width:52px;height:52px"><rect x="12" y="8" width="36" height="44" rx="10" fill="#182219" stroke="#2c3f34" stroke-width="2"></rect><g style="animation:ledFlashGreen 2.5s ease-in-out infinite"><circle cx="30" cy="30" r="7" fill="#2a9468"></circle><circle cx="30" cy="30" r="13" fill="#2a9468" opacity="0.3"></circle></g></svg>
+            </div>
+            <div style="padding:14px 16px;background:#0f1a13;display:flex;flex-direction:column;justify-content:center;flex:1"><div style="font-weight:600;color:#e8efe9">Green — positive detection</div><div style="color:#a9c6b3;font-size:0.92rem;margin-top:2px">One of the images is transmitted by the communications unit.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="tg-fig" style="height:320px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/08-led-indicator-on-trigger.jpg" alt="LED indicator on trigger"></div>
+    </div>
+  </section>
+
+  <!-- ============ 05 TRANSMISSION ============ -->
+  <section id="sg-05" style="margin-top:58px">
+    <div style="border-bottom:1px solid rgba(232,239,233,.14);padding-bottom:14px;margin-bottom:22px">
+      <h2 class="tg-print-flip" style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:1.7rem;letter-spacing:.005em;color:#fbf8ec;line-height:1.05;margin-top:9px"><span style="color:#ff7a00;margin-right:14px;font-variant-numeric:tabular-nums">05</span>Real-time transmission</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:300px 1fr;gap:30px;align-items:start">
+      <div class="tg-fig" style="height:300px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/09-amber-transmission-led.jpg" alt="Amber transmission LED"></div>
+      <div>
+        <p style="color:#bccabf;max-width:42ch">Only images with a positive AI detection are transmitted. Transmission typically takes <strong style="color:#e8efe9">under 20 seconds</strong>, following this LED sequence:</p>
+        <ol style="margin-top:18px;display:grid;gap:0">
+          <li style="display:flex;gap:12px;padding:11px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">1</span><span>Red and green lights on</span></li>
+          <li style="display:flex;gap:12px;padding:11px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">2</span><span>Amber light on — connecting to cell network</span></li>
+          <li style="display:flex;gap:12px;padding:11px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">3</span><span>Amber light flashing — transmission in progress</span></li>
+          <li style="display:flex;gap:12px;padding:11px 0"><span style="font-family:var(--font-mono);color:#ff7a00;font-weight:700">4</span><span>LEDs off — transmission complete</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- LED indicator panel illustration (interactive, driven by setupguide.js) -->
+    <div id="tg-led-panel" style="margin-top:26px;background:#101813;border:1px solid rgba(232,239,233,.08);border-radius:14px;padding:26px 28px 22px;break-inside:avoid">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px">
+        <div style="font-family:'Shuttleblock',var(--font-sans);font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:#fbf8ec;font-size:0.85rem">LED indicator panel</div>
+        <div id="tg-led-step-label" style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:#ff9d40">Transmitting</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:24px;padding:0 4px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:13px;flex:1">
+          <div class="tg-led" data-led="sig1" style="width:26px;height:26px;border-radius:999px;border:1px solid #26332b;background:#182219;box-shadow:inset 0 1px 2px rgba(0,0,0,.55);transition:background .3s,box-shadow .3s"></div>
+          <div class="tg-led-label" data-led-label="sig1" style="font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.05em;text-transform:uppercase;color:#4b5a51">Sig 1</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:13px;flex:1">
+          <div class="tg-led" data-led="sig2" style="width:26px;height:26px;border-radius:999px;border:1px solid #26332b;background:#182219;box-shadow:inset 0 1px 2px rgba(0,0,0,.55);transition:background .3s,box-shadow .3s"></div>
+          <div class="tg-led-label" data-led-label="sig2" style="font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.05em;text-transform:uppercase;color:#4b5a51">Sig 2</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:13px;flex:1">
+          <div class="tg-led" data-led="trans" style="width:26px;height:26px;border-radius:999px;border:1px solid #26332b;background:#182219;box-shadow:inset 0 1px 2px rgba(0,0,0,.55);transition:background .3s,box-shadow .3s"></div>
+          <div class="tg-led-label" data-led-label="trans" style="font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.05em;text-transform:uppercase;color:#4b5a51">Transmit</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:13px;flex:1">
+          <div class="tg-led" data-led="lora" style="width:26px;height:26px;border-radius:999px;border:1px solid #26332b;background:#182219;box-shadow:inset 0 1px 2px rgba(0,0,0,.55);transition:background .3s,box-shadow .3s"></div>
+          <div class="tg-led-label" data-led-label="lora" style="font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.05em;text-transform:uppercase;color:#4b5a51">LoRa</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:13px;flex:1">
+          <div class="tg-led" data-led="power" style="width:26px;height:26px;border-radius:999px;border:1px solid #26332b;background:#182219;box-shadow:inset 0 1px 2px rgba(0,0,0,.55);transition:background .3s,box-shadow .3s"></div>
+          <div class="tg-led-label" data-led-label="power" style="font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.05em;text-transform:uppercase;color:#4b5a51"><svg viewBox="0 0 12 12" width="9" height="9" aria-hidden="true" style="margin-right:3px;vertical-align:-0.5px"><path d="M6 1.2v4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"></path><path d="M3.4 3a4.1 4.1 0 1 0 5.2 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"></path></svg>Power</div>
+        </div>
+      </div>
+      <div id="tg-led-caption" style="margin-top:20px;border-top:1px solid rgba(232,239,233,.08);padding-top:14px;color:#9db3a5;font-size:0.88rem">Transmission LED flashing — image upload in progress.</div>
+      <div class="tg-controls" style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+        <button type="button" class="tg-led-step" data-step="ready" style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;padding:7px 13px;border-radius:999px;cursor:pointer;background:transparent;color:#9db3a5;border:1px solid #2a3a30;transition:all .2s">Ready</button>
+        <button type="button" class="tg-led-step" data-step="connecting" style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;padding:7px 13px;border-radius:999px;cursor:pointer;background:transparent;color:#9db3a5;border:1px solid #2a3a30;transition:all .2s">Connecting</button>
+        <button type="button" class="tg-led-step" data-step="transmitting" style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;padding:7px 13px;border-radius:999px;cursor:pointer;background:transparent;color:#9db3a5;border:1px solid #2a3a30;transition:all .2s">Transmitting</button>
+        <button type="button" class="tg-led-step" data-step="off" style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;padding:7px 13px;border-radius:999px;cursor:pointer;background:transparent;color:#9db3a5;border:1px solid #2a3a30;transition:all .2s">Complete</button>
+        <button type="button" id="tg-led-play" style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;padding:7px 15px;border-radius:999px;cursor:pointer;background:transparent;color:#ff9d40;border:1px solid #ff7a00;transition:all .2s"><span class="tg-led-icon-play"><svg viewBox="0 0 10 12" width="8" height="10" aria-hidden="true"><path d="M1 1l8 5-8 5z" fill="currentColor"></path></svg></span><span class="tg-led-icon-stop" hidden><svg viewBox="0 0 10 10" width="8" height="8" aria-hidden="true"><rect x="1" y="1" width="8" height="8" rx="1" fill="currentColor"></rect></svg></span><span class="tg-led-play-text">Play sequence</span></button>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;background:#101813;border:1px solid rgba(232,239,233,.10);border-left:3px solid #ff7a00;border-radius:0 8px 8px 0;padding:16px 20px;break-inside:avoid">
+      <span style="display:block;font-family:'Shuttleblock',var(--font-sans);font-weight:500;text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:#ff7a00;margin-bottom:7px">Note</span>
+      <p style="color:#bccabf;font-size:0.95rem">On first-time registration — or if the camera is moved to a new location — establishing a connection may take a couple of minutes (amber LED turns solid). Retrigger to continue registration, or connect via Setup Mode. Once registered, subsequent transmissions are quick.</p>
+    </div>
+  </section>
+
+  <!-- ============ 06 BATTERY & SD ============ -->
+  <section id="sg-06" style="margin-top:58px">
+    <div style="border-bottom:1px solid rgba(232,239,233,.14);padding-bottom:14px;margin-bottom:22px">
+      <h2 class="tg-print-flip" style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:1.7rem;letter-spacing:.005em;color:#fbf8ec;line-height:1.05;margin-top:9px"><span style="color:#ff7a00;margin-right:14px;font-variant-numeric:tabular-nums">06</span>Battery &amp; SD card</h2>
+    </div>
+
+    <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1.05rem;font-weight:500;text-transform:uppercase;letter-spacing:.03em;color:#a9c6b3">Battery charging</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:14px;align-items:start">
+      <div>
+        <ul style="display:grid;gap:0;font-size:0.96rem">
+          <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Fully charge the 3.7V Li-ion battery before deployment (~8 hours).</span></li>
+          <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>A full charge supports around <strong style="color:#e8efe9">10,000 transmissions</strong>.</span></li>
+          <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Battery status is sent with every alert and shown on the dashboard.</span></li>
+          <li style="display:flex;gap:12px;padding:9px 0"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Range: <span style="font-family:var(--font-mono);color:#a9c6b3">4.2V</span> (100%) to <span style="font-family:var(--font-mono);color:#a9c6b3">3.25V</span> (low).</span></li>
+        </ul>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="tg-fig" style="height:150px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/10-full-charge-green.jpg" alt="Full charge (green)"></div>
+        <div class="tg-fig" style="height:150px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/11-charging.jpg" alt="Charging"></div>
+        <div style="grid-column:1/-1;display:flex;gap:18px;font-size:0.82rem;color:#8ba295;justify-content:center">
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:999px;background:#2a9468"></span>Full charge</span>
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:999px;background:#ff7a00"></span>Charging</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1.05rem;font-weight:500;text-transform:uppercase;letter-spacing:.03em;color:#a9c6b3;margin-top:32px">Accessing the SD card</h3>
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:24px;margin-top:14px;align-items:start">
+      <div class="tg-fig" style="height:230px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/12-removing-sd-card-with-tweezer.jpg" alt="Removing SD card with tweezer"></div>
+      <div>
+        <p style="color:#bccabf;font-size:0.96rem">All full-resolution images are saved to the microSD card. Carefully unscrew the cover and retrieve the card with the provided tweezer.</p>
+        <ul style="display:grid;gap:0;font-size:0.96rem;margin-top:12px">
+          <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Images are auto-sorted by AI into folders (people, animal, vehicle).</span></li>
+          <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Each event includes a metadata text file — detection probability, battery charge, storage.</span></li>
+          <li style="display:flex;gap:12px;padding:9px 0"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Always replace the card and screw the cover closed tightly.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 SETUP MODE ============ -->
+  <section id="sg-07" style="margin-top:58px">
+    <div style="border-bottom:1px solid rgba(232,239,233,.14);padding-bottom:14px;margin-bottom:22px">
+      <h2 class="tg-print-flip" style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:1.7rem;letter-spacing:.005em;color:#fbf8ec;line-height:1.05;margin-top:9px"><span style="color:#ff7a00;margin-right:14px;font-variant-numeric:tabular-nums">07</span>Setup Mode</h2>
+    </div>
+    <p style="color:#bccabf">Setup Mode lets you connect to the device wirelessly (over-the-air) from a phone or laptop to edit configurations and run updates.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px;align-items:start">
+      <div style="break-inside:avoid">
+        <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1rem;font-weight:500;text-transform:uppercase;letter-spacing:.03em;color:#a9c6b3">1. Enter Setup Mode</h3>
+        <p style="color:#bccabf;font-size:0.94rem;margin-top:8px">Insert the magnet (stored on the mounting bracket) into the side slot. Power on the unit and trigger the motion sensor — the blue LED turns on.</p>
+        <div style="display:inline-flex;align-items:center;gap:9px;margin-top:12px;padding:7px 13px 7px 9px;border:1px solid rgba(232,239,233,.10);border-radius:999px;background:#101813"><svg viewBox="0 0 60 60" style="width:26px;height:26px"><rect x="12" y="8" width="36" height="44" rx="10" fill="#182219" stroke="#2c3f34" stroke-width="2"></rect><circle cx="30" cy="30" r="7" fill="#2a6fdb"></circle><circle cx="30" cy="30" r="13" fill="#2a6fdb" opacity="0.28"></circle></svg><span style="font-size:0.85rem;color:#a9c6b3">Blue LED solid — Setup Mode active</span></div>
+        <div class="tg-fig" style="height:360px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813;margin-top:12px"><img src="assets/images/setupguide/13-insert-magnet-here-to-enter-setup-mode.jpg" alt="Insert magnet here to enter Setup Mode"></div>
+      </div>
+      <div style="break-inside:avoid">
+        <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1rem;font-weight:500;text-transform:uppercase;letter-spacing:.03em;color:#a9c6b3">2. Connect over Wi-Fi</h3>
+        <p style="color:#bccabf;font-size:0.94rem;margin-top:8px">Join the access point <span style="font-family:var(--font-mono);background:#0b0f0c;color:#a9c6b3;padding:1px 6px;border-radius:5px;border:1px solid rgba(232,239,233,.08)">TrailGuard-XXXX</span> (XXXX = last 4 digits of IMEI; no password). Open a browser to <span style="font-family:var(--font-mono);background:#0b0f0c;color:#a9c6b3;padding:1px 6px;border-radius:5px;border:1px solid rgba(232,239,233,.08)">192.168.1.1</span> to reach the Main Menu.</p>
+        <div class="tg-fig" style="height:200px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813;margin-top:12px"><img src="assets/images/setupguide/14-setup-mode-main-menu.jpg" alt="Setup Mode main menu"></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1.05rem;font-weight:500;text-transform:uppercase;letter-spacing:.03em;color:#a9c6b3;margin-top:30px;break-after:avoid">The Setup Mode interface</h3>
+    <div style="display:flex;flex-direction:column;gap:24px;margin-top:14px">
+      <div style="break-inside:avoid">
+        <div class="tg-fig" style="height:360px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/15-camera-preview.jpg" alt="Camera preview"></div>
+        <div style="font-weight:600;color:#e8efe9;margin-top:8px;font-size:0.98rem">Device Tests — Camera Preview</div>
+        <p style="color:#8ba295;font-size:0.9rem;margin-top:2px">Livestreams the camera frame to verify placement, coverage, and avoid blind spots during installation.</p>
+      </div>
+      <div style="break-inside:avoid">
+        <div class="tg-fig" style="height:360px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/16-cellular-module-tests.jpg" alt="Cellular module tests"></div>
+        <div style="font-weight:600;color:#e8efe9;margin-top:8px;font-size:0.98rem">Device Tests — Cellular Module</div>
+        <p style="color:#8ba295;font-size:0.9rem;margin-top:2px">Verifies connectivity and data transmission with live logs: network status, APN, config &amp; firmware download, live capture upload.</p>
+      </div>
+      <div style="break-inside:avoid">
+        <div class="tg-fig" style="height:360px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/17-firmware-update.jpg" alt="Firmware update"></div>
+        <div style="font-weight:600;color:#e8efe9;margin-top:8px;font-size:0.98rem">Firmware</div>
+        <p style="color:#8ba295;font-size:0.9rem;margin-top:2px">Update device firmware by manual file upload.</p>
+      </div>
+      <div style="break-inside:avoid">
+        <div class="tg-fig" style="height:360px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/18-settings.jpg" alt="Settings"></div>
+        <div style="font-weight:600;color:#e8efe9;margin-top:8px;font-size:0.98rem">Settings</div>
+        <p style="color:#8ba295;font-size:0.9rem;margin-top:2px">Camera info, APN, detector transmission rules, updates, factory reset. Press <em style="color:#a9c6b3">Load Current Settings</em> before editing to preserve current values.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 DASHBOARD ============ -->
+  <section id="sg-08" style="margin-top:58px">
+    <div style="border-bottom:1px solid rgba(232,239,233,.14);padding-bottom:14px;margin-bottom:22px">
+      <h2 class="tg-print-flip" style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:1.7rem;letter-spacing:.005em;color:#fbf8ec;line-height:1.05;margin-top:9px"><span style="color:#ff7a00;margin-right:14px;font-variant-numeric:tabular-nums">08</span>Nightjar IQ Dashboard</h2>
+    </div>
+    <p style="color:#bccabf">All TrailGuard alerts are sent to the online dashboard at <a href="https://app.nightjar.tech">app.nightjar.tech</a>. Dedicated accounts can be set up per organization, team, or location and linked to specific cameras.</p>
+
+    <div class="tg-fig" style="margin-top:22px;height:330px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/19-dashboard.jpg" alt="Dashboard"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px">
+      <div class="tg-fig" style="height:200px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813;break-inside:avoid"><img src="assets/images/setupguide/20-camera-map.jpg" alt="Camera map"></div>
+      <div class="tg-fig" style="height:200px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813;break-inside:avoid"><img src="assets/images/setupguide/21-alert-gallery.jpg" alt="Alert gallery"></div>
+    </div>
+    <ul style="display:grid;gap:0;font-size:0.96rem;margin-top:18px">
+      <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Sort and view alert images by location, detection type, and date/time.</span></li>
+      <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Review "Periodic Health Check" images and monitor camera status (e.g. battery charge) in the field.</span></li>
+      <li style="display:flex;gap:12px;padding:9px 0"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Perform basic data analysis across your deployment.</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ 09 DEPLOYMENT ============ -->
+  <section id="sg-09" style="margin-top:58px">
+    <div style="border-bottom:1px solid rgba(232,239,233,.14);padding-bottom:14px;margin-bottom:22px">
+      <h2 class="tg-print-flip" style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:1.7rem;letter-spacing:.005em;color:#fbf8ec;line-height:1.05;margin-top:9px"><span style="color:#ff7a00;margin-right:14px;font-variant-numeric:tabular-nums">09</span>Deployment tips</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start">
+      <div>
+        <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1rem;font-weight:500;text-transform:uppercase;letter-spacing:.03em;color:#a9c6b3">Placement</h3>
+        <ul style="display:grid;gap:0;font-size:0.96rem;margin-top:10px">
+          <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Deploy on trails with trees or terrain on both sides — avoid pointing at open areas.</span></li>
+          <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Install several meters back from the trail to optimize field of view and object distance.</span></li>
+          <li style="display:flex;gap:12px;padding:9px 0"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Where possible, elevate the camera several meters above ground.</span></li>
+        </ul>
+      </div>
+      <div class="tg-fig" style="height:260px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/22-camera-positioned-along-trail.jpg" alt="Camera positioned along trail"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:260px 1fr;gap:28px;margin-top:26px;align-items:start">
+      <div class="tg-fig" style="height:340px;border-radius:14px;overflow:hidden;border:1px solid rgba(232,239,233,.10);background:#101813"><img src="assets/images/setupguide/23-elevated-camera-on-tree.jpg" alt="Elevated camera on tree"></div>
+      <div>
+        <h3 style="font-family:'Shuttleblock',var(--font-sans);font-size:1rem;font-weight:500;text-transform:uppercase;letter-spacing:.03em;color:#a9c6b3">Why elevate?</h3>
+        <ul style="display:grid;gap:0;font-size:0.96rem;margin-top:10px">
+          <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Better field of view — AI detection is agnostic to viewing angle and stays accurate.</span></li>
+          <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Improved concealment from trail traffic.</span></li>
+          <li style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(232,239,233,.07)"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Stronger signal reception and transmission.</span></li>
+          <li style="display:flex;gap:12px;padding:9px 0"><span style="width:6px;height:6px;background:#ff7a00;border-radius:1px;flex:none;margin-top:8px"></span><span>Remove branches and objects that could falsely trigger the sensor.</span></li>
+        </ul>
+        <p style="color:#8ba295;font-size:0.92rem;margin-top:12px">Use Live View to preview and adjust the angle, then walk in front of the installed camera to confirm a proper trigger (check the LED).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 CHECKLIST ============ -->
+  <section id="sg-10" style="margin-top:58px">
+    <div style="background:#101813;border:1px solid rgba(232,239,233,.10);border-radius:16px;padding:40px 40px 36px;color:#e8efe9">
+      <div style="display:inline-block;background:#ff7a00;color:#0b0f0c;font-family:'Shuttleblock',var(--font-sans);font-weight:500;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;padding:5px 12px 4px;border-radius:3px">Ready to deploy</div>
+      <h2 style="font-family:'Shuttleblock',var(--font-sans);font-weight:700;text-transform:uppercase;font-size:2rem;letter-spacing:-0.005em;margin-top:16px;color:#fbf8ec">You're all set</h2>
+      <p style="color:#9db3a5;margin-top:10px;max-width:44ch">Run through these final reminders before leaving for the field.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 28px;margin-top:24px">
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid rgba(232,239,233,.08)"><span style="color:#ff9d40;flex:none;display:inline-flex;margin-top:5px"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M1.8 6.4l2.8 2.8 5.6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span><span style="font-size:0.96rem">Ensure all covers — communications unit and SD card — are securely closed and tightened.</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid rgba(232,239,233,.08)"><span style="color:#ff9d40;flex:none;display:inline-flex;margin-top:5px"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M1.8 6.4l2.8 2.8 5.6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span><span style="font-size:0.96rem">Fully charge the battery.</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid rgba(232,239,233,.08)"><span style="color:#ff9d40;flex:none;display:inline-flex;margin-top:5px"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M1.8 6.4l2.8 2.8 5.6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span><span style="font-size:0.96rem">Bring the magnet for Setup Mode.</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid rgba(232,239,233,.08)"><span style="color:#ff9d40;flex:none;display:inline-flex;margin-top:5px"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M1.8 6.4l2.8 2.8 5.6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span><span style="font-size:0.96rem">Cover the motion sensor during transport to avoid accidental triggers.</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid rgba(232,239,233,.08);grid-column:1/-1"><span style="color:#ff9d40;flex:none;display:inline-flex;margin-top:5px"><svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M1.8 6.4l2.8 2.8 5.6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span><span style="font-size:0.96rem">For real-time transmission, confirm the SIM has an active data plan with remaining balance.</span></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>

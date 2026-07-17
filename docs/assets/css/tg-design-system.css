@@ -1,0 +1,219 @@
+/* TrailGuard Design System — shared tokens + self-hosted fonts.
+   Extracted from the setup guide (whose palette was itself lifted from the
+   firmware installer). Load this before styles.css / setupguide.css. */
+
+/* --- Self-hosted fonts.
+   All platforms render identical type: Inter stands in for SF Pro (Apple's
+   license restricts SF Pro to Apple platforms), Roboto Mono for SF Mono,
+   Shuttleblock is the TrailGuard brand display face. --- */
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("../fonts/roboto-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("../fonts/roboto-mono-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shuttleblock";
+  src: url("../fonts/Shuttleblock-500.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shuttleblock";
+  src: url("../fonts/Shuttleblock-700.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TrailGuard color system
+   Dark forest-green surfaces, warm orange signal accent, conservation green. */
+:root {
+  /* --- Brand base palette --- */
+  --tg-ink-950: #0b0f0c; /* deepest background */
+  --tg-ink-900: #101813; /* primary surface */
+  --tg-ink-850: #111d16; /* raised surface */
+  --tg-ink-800: #16241c; /* highest surface */
+  --tg-ink-700: #1a2a21; /* hairline border */
+  --tg-ink-600: #2c3f34; /* focus ring / strong border */
+
+  --tg-paper: #f7f5ee;   /* warm off-white (document/print) */
+  --tg-paper-2: #efece1; /* secondary paper */
+  --tg-cream: #fbf8ec;   /* logo cream */
+
+  --tg-text-100: #e8efe9; /* primary text on dark */
+  --tg-text-300: #9db3a5; /* muted text on dark */
+  --tg-text-900: #14201a; /* primary text on paper */
+  --tg-text-600: #51695c; /* muted text on paper */
+
+  /* Signal accent — orange */
+  --tg-orange-500: #ff7a00;
+  --tg-orange-600: #e06b00;
+  --tg-orange-100: #ffe7cc;
+
+  /* Conservation green */
+  --tg-green-600: #1f7a53;
+  --tg-green-500: #2a9468;
+  --tg-green-100: #d3ece0;
+
+  /* Status */
+  --tg-warn: #f59e0b;
+  --tg-warn-100: #fcd34d;
+  --tg-danger: #e0563b;
+  --tg-info: #8fe0b7;
+}
+
+/* TrailGuard typography
+   Self-hosted webfonts first so every OS/browser renders the same faces;
+   system stacks remain as fallback while fonts load. Mono is used for
+   versions, serials, firmware strings and log output. */
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, "SFMono-Regular", Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-display: "Shuttleblock", "Inter", system-ui, sans-serif;
+
+  /* Type scale (1.25 major-third-ish, tuned) */
+  --text-xs: 0.75rem;   /* 12px — captions, tags */
+  --text-sm: 0.85rem;   /* ~13.6px — secondary */
+  --text-base: 1rem;    /* 16px — body */
+  --text-md: 1.15rem;   /* ~18px — lead */
+  --text-lg: 1.3rem;    /* ~21px — card titles */
+  --text-xl: 1.7rem;    /* ~27px — section heads */
+  --text-2xl: 2.2rem;   /* ~35px — page titles */
+  --text-3xl: 3rem;     /* 48px — display */
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.45;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  /* Letter spacing */
+  --tracking-eyebrow: 0.05em; /* uppercase eyebrows */
+  --tracking-tag: 0.04em;
+  --tracking-tight: -0.01em;
+}
+
+/* TrailGuard spacing, radii, shadows */
+:root {
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-pill: 999px;
+
+  /* Shadows — dark UI relies on borders + faint elevation */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --shadow-doc: 0 12px 40px rgba(20, 32, 26, 0.12);
+
+  /* Accent inset glow (primary-button treatment) */
+  --inset-accent: inset 0 0 0 1px var(--tg-orange-500);
+
+  /* Transitions */
+  --ease: 0.18s ease;
+  --ease-fast: 0.08s ease;
+}
+
+/* --- Cross-platform normalization --- */
+
+/* Form controls do not inherit fonts by default (each OS substitutes its own
+   UI font); force the page fonts everywhere. */
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* Hide <details> markers in all engines (Chrome/Safari use the pseudo,
+   Firefox uses list-style / ::marker). */
+summary::marker {
+  content: "";
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Neutralize Chrome's autofill yellow/blue flash on dark inputs. */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px var(--tg-ink-850) inset;
+  -webkit-text-fill-color: var(--tg-text-100);
+  caret-color: var(--tg-text-100);
+}
+
+/* Consistent scrollbars (macOS overlay vs Windows gutter). */
+html {
+  scrollbar-color: #2c3f34 transparent; /* Firefox */
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #22312a;
+  border-radius: 8px;
+  border: 3px solid #0b0f0c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2c3f34;
+}
