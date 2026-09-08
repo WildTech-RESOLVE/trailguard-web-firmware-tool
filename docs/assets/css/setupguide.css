@@ -31,12 +31,12 @@
    size (no fixed-height letterboxing), the full image always shows, and the
    frame has square corners. Overrides the design-tool export's inline heights,
    radii, and letterbox backgrounds. */
-#setup .tg-fig {
+#panel-setup .tg-fig {
   height: auto !important;
   border-radius: 0 !important;
   background: transparent !important;
 }
-#setup .tg-fig img {
+#panel-setup .tg-fig img {
   height: auto !important;
   width: 100%;
   object-fit: contain;
@@ -110,12 +110,12 @@
 }
 
 /* Offset section anchors so they clear the sticky app bar when scrolled to. */
-#setup section[id^="sg-"] {
+#panel-setup section[id^="sg-"] {
   scroll-margin-top: 90px;
 }
 
 @media (max-width: 720px) {
-  #setup section[id^="sg-"] {
+  #panel-setup section[id^="sg-"] {
     scroll-margin-top: 16px;
   }
 }
@@ -123,10 +123,10 @@
 /* The guide's layout grids are inline styles from the design-tool export;
    collapse them to a single column on narrow screens. */
 @media (max-width: 680px) {
-  #setup [style*="grid-template-columns"] {
+  #panel-setup [style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
   }
-  #setup .tg-fig {
+  #panel-setup .tg-fig {
     height: auto !important;
     max-height: 420px;
   }

@@ -24,6 +24,7 @@
     </a>
     <nav class="nav">
       <a class="nav-link active" href="#setup" data-panel="setup">Set Up Guide</a>
+      <a class="nav-link" href="#alerts" data-panel="alerts">Alert Activation</a>
       <a class="nav-link" href="#install" data-panel="install">Firmware Update</a>
       <a class="nav-link" href="#download" data-panel="download">Download</a>
       <a class="nav-link" href="#troubleshooting" data-panel="troubleshooting">Troubleshooting</a>
@@ -31,11 +32,15 @@
   </header>
 
   <main class="wrap">
-    <section class="panel" id="setup">
+    <section class="panel" id="panel-setup">
       <p class="setup-loading">Loading setup guide…</p>
     </section>
 
-    <section class="hero panel panel-hidden" id="install">
+    <section class="panel panel-hidden" id="panel-alerts">
+      <p class="setup-loading">Loading Telegram alert setup…</p>
+    </section>
+
+    <section class="hero panel panel-hidden" id="panel-install">
       <div class="hero-card primary">
         <div class="meta-row" id="firmware-meta">
           <div class="meta-item"><span class="pill">Model</span><span id="fw-model">TrailGuard 4B</span></div>
@@ -100,7 +105,7 @@
       </div>
     </section>
 
-    <section class="card panel panel-hidden" id="download">
+    <section class="card panel panel-hidden" id="panel-download">
       <h2>Previous Firmware Versions</h2>
       <p>Download app-only binaries for TrailGuard portal updates, or install directly from the web browser. These packages flash only the application to preserve device settings and statistics. Please note that a complete installation (using the "Install The Latest TrailGuard Firmware" instructions above) is required for updates from versions 1.x or earlier.</p>
       <ul class="download-list">
@@ -158,7 +163,7 @@
       </ul>
     </section>
 
-    <section class="panel panel-hidden troubleshooting-panel" id="troubleshooting">
+    <section class="panel panel-hidden troubleshooting-panel" id="panel-troubleshooting">
       <section class="card" id="startScreen">
         <h2>TrailGuard Troubleshooting Tool</h2>
         <p class="muted">

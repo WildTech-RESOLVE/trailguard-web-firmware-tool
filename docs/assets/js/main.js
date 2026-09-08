@@ -5,11 +5,12 @@
   const dateEl = document.getElementById("fw-date");
   const navLinks = Array.from(document.querySelectorAll(".nav-link[data-panel]"));
   const brandLink = document.querySelector(".brand[data-panel]");
-  const panelIds = ["setup", "install", "download", "troubleshooting"];
+  const panelIds = ["setup", "alerts", "install", "download", "troubleshooting"];
   // Which footer variant each tab shows: the guide/troubleshooting tabs get the
   // support-contact footer, the firmware tabs keep the esptool-js credit.
   const footerByPanel = {
     setup: "guide",
+    alerts: "guide",
     install: "tools",
     download: "tools",
     troubleshooting: "guide",
@@ -19,10 +20,55 @@
     loadManifest();
     initTabs();
     loadSetupGuide();
+    loadTelegramGuide();
   });
 
+  function loadTelegramGuide() {
+    const panel = document.getElementById("panel-alerts");
+    if (!panel) {
+      return;
+    }
+    fetch("telegram.html", { cache: "no-store" })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+        return res.text();
+      })
+      .then((html) => {
+        panel.innerHTML = html;
+        initTelegramSwitch(panel);
+      })
+      .catch((err) => {
+        console.warn("Failed to load Telegram alert setup", err);
+        panel.innerHTML =
+          '<p class="muted">Could not load the Telegram alert setup guide. Please refresh the page to try again.</p>';
+      });
+  }
+
+  // Option A / Option B switch: show one flow at a time so the page stays short.
+  function initTelegramSwitch(panel) {
+    const buttons = Array.from(panel.querySelectorAll(".njtg-switch-btn[data-flow]"));
+    const flows = Array.from(panel.querySelectorAll(".njtg-flow"));
+    if (!buttons.length || !flows.length) {
+      return;
+    }
+    function show(flowId) {
+      flows.forEach((flow) => {
+        flow.hidden = flow.id !== flowId;
+      });
+      buttons.forEach((btn) => {
+        btn.setAttribute("aria-pressed", btn.dataset.flow === flowId ? "true" : "false");
+      });
+    }
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => show(btn.dataset.flow));
+    });
+    show(buttons[0].dataset.flow);
+  }
+
   function loadSetupGuide() {
-    const panel = document.getElementById("setup");
+    const panel = document.getElementById("panel-setup");
     if (!panel) {
       return;
     }
@@ -139,8 +185,14 @@
   }
 
   function setActivePanel(panelId, updateHash) {
+    // Panel elements are id'd "panel-<hash>" — deliberately NOT matching the
+    // hash, so the browser never anchor-scrolls to them (it would land the
+    // page below the sticky appbar, and Chrome re-anchors as fetched content
+    // resizes the layout).
+    const targetPanel = document.getElementById(`panel-${panelId}`);
+    const isSwitch = targetPanel && targetPanel.classList.contains("panel-hidden");
     panelIds.forEach((id) => {
-      const panelEl = document.getElementById(id);
+      const panelEl = document.getElementById(`panel-${id}`);
       if (!panelEl) {
         return;
       }
@@ -158,6 +210,13 @@
 
     if (updateHash && window.location.hash !== `#${panelId}`) {
       window.location.hash = panelId;
+    }
+
+    // Land at the top of the newly opened section. The hash assignment above
+    // makes the browser scroll to the panel element, which sits below the
+    // sticky appbar — so without this the page rests slightly scrolled down.
+    if (isSwitch) {
+      window.scrollTo(0, 0);
     }
   }
 })();
