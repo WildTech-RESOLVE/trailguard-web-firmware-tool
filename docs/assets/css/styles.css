@@ -110,10 +110,14 @@ a {
 
 .nav-link {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   padding: 10px 14px;
   border: none;
   border-radius: 6px 6px 0 0;
   background: transparent;
+  cursor: pointer;
   font-family: var(--font-display);
   font-size: 0.82rem;
   font-weight: 500;
@@ -150,8 +154,71 @@ a {
   transform: scaleX(1);
 }
 
+.nav-menu {
+  position: relative;
+}
+
+.nav-chevron {
+  flex: none;
+  transition: transform 0.15s ease;
+}
+
+.nav-menu.open .nav-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-submenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  min-width: 190px;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--ring);
+  border-radius: 10px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+}
+
+.nav-submenu[hidden] {
+  display: none;
+}
+
+.nav-sub-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.nav-sub-link:hover,
+.nav-sub-link:focus-visible {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-sub-link:focus-visible {
+  outline: 1px solid var(--accent);
+}
+
+.nav-sub-link.active {
+  color: var(--tg-cream);
+  background: rgba(255, 122, 0, 0.1);
+}
+
 .panel-hidden {
   display: none !important;
+}
+
+#panel-alerts .njtg .njtg-ans {
+  width: 100%;
+  max-width: none;
 }
 
 .wrap {

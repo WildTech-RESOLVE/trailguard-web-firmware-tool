@@ -3,14 +3,19 @@
   const modelEl = document.getElementById("fw-model");
   const versionEl = document.getElementById("fw-version");
   const dateEl = document.getElementById("fw-date");
-  const navLinks = Array.from(document.querySelectorAll(".nav-link[data-panel]"));
+  const navLinks = Array.from(
+    document.querySelectorAll(".nav-link[data-panel], .nav-sub-link[data-panel]")
+  );
   const brandLink = document.querySelector(".brand[data-panel]");
-  const panelIds = ["setup", "alerts", "install", "download", "troubleshooting"];
+  const alertMenu = document.querySelector(".nav-menu");
+  const alertMenuToggle = document.querySelector(".nav-menu-toggle");
+  const panelIds = ["setup", "alerts", "earthranger", "install", "download", "troubleshooting"];
   // Which footer variant each tab shows: the guide/troubleshooting tabs get the
   // support-contact footer, the firmware tabs keep the esptool-js credit.
   const footerByPanel = {
     setup: "guide",
     alerts: "guide",
+    earthranger: "guide",
     install: "tools",
     download: "tools",
     troubleshooting: "guide",
@@ -21,6 +26,7 @@
     initTabs();
     loadSetupGuide();
     loadTelegramGuide();
+    loadEarthRangerGuide();
   });
 
   function loadTelegramGuide() {
@@ -44,6 +50,72 @@
         panel.innerHTML =
           '<p class="muted">Could not load the Telegram alert setup guide. Please refresh the page to try again.</p>';
       });
+  }
+
+  function loadEarthRangerGuide() {
+    const panel = document.getElementById("panel-earthranger");
+    if (!panel) {
+      return;
+    }
+    fetch("earthranger.html", { cache: "no-store" })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+        return res.text();
+      })
+      .then((html) => {
+        panel.innerHTML = html;
+        initCopyButtons(panel);
+      })
+      .catch((err) => {
+        console.warn("Failed to load EarthRanger alert setup", err);
+        panel.innerHTML =
+          '<p class="muted">Could not load the EarthRanger alert setup guide. Please refresh the page to try again.</p>';
+      });
+  }
+
+  function initCopyButtons(panel) {
+    panel.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const value = button.dataset.copy;
+        const label = button.querySelector(".njer-copy");
+        const markDone = () => {
+          button.classList.add("is-done");
+          if (label) {
+            label.textContent = "Copied";
+          }
+          window.setTimeout(() => {
+            button.classList.remove("is-done");
+            if (label) {
+              label.textContent = "Copy";
+            }
+          }, 1800);
+        };
+
+        const copyFallback = () => {
+          const textarea = document.createElement("textarea");
+          textarea.value = value;
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            if (document.execCommand("copy")) {
+              markDone();
+            }
+          } catch (err) {
+            console.warn("Could not copy EarthRanger event type", err);
+          }
+          textarea.remove();
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(value).then(markDone).catch(copyFallback);
+          return;
+        }
+
+        copyFallback();
+      });
+    });
   }
 
   // Option A / Option B switch: show one flow at a time so the page stays short.
@@ -146,6 +218,7 @@
   function initTabs() {
     const initialPanel = getInitialPanelId();
     setActivePanel(initialPanel, false);
+    initAlertMenu();
 
     navLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
@@ -155,6 +228,7 @@
           return;
         }
         setActivePanel(panelId, true);
+        closeAlertMenu();
       });
     });
 
@@ -173,7 +247,49 @@
         return;
       }
       setActivePanel(hashPanel, false);
+      closeAlertMenu();
     });
+  }
+
+  function initAlertMenu() {
+    if (!alertMenu || !alertMenuToggle) {
+      return;
+    }
+
+    alertMenuToggle.addEventListener("click", () => {
+      const open = !alertMenu.classList.contains("open");
+      alertMenu.classList.toggle("open", open);
+      alertMenuToggle.setAttribute("aria-expanded", String(open));
+      const submenu = alertMenu.querySelector(".nav-submenu");
+      if (submenu) {
+        submenu.hidden = !open;
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!alertMenu.contains(event.target)) {
+        closeAlertMenu();
+      }
+    });
+
+    alertMenu.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeAlertMenu();
+        alertMenuToggle.focus();
+      }
+    });
+  }
+
+  function closeAlertMenu() {
+    if (!alertMenu || !alertMenuToggle) {
+      return;
+    }
+    alertMenu.classList.remove("open");
+    alertMenuToggle.setAttribute("aria-expanded", "false");
+    const submenu = alertMenu.querySelector(".nav-submenu");
+    if (submenu) {
+      submenu.hidden = true;
+    }
   }
 
   function getInitialPanelId() {
@@ -202,6 +318,12 @@
     navLinks.forEach((link) => {
       link.classList.toggle("active", link.dataset.panel === panelId);
     });
+    if (alertMenuToggle) {
+      alertMenuToggle.classList.toggle(
+        "active",
+        panelId === "alerts" || panelId === "earthranger"
+      );
+    }
 
     const footerKind = footerByPanel[panelId] || "tools";
     document.querySelectorAll(".footer-variant").forEach((el) => {

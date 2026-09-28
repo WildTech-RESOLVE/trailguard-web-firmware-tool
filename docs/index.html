@@ -24,7 +24,18 @@
     </a>
     <nav class="nav">
       <a class="nav-link active" href="#setup" data-panel="setup">Set Up Guide</a>
-      <a class="nav-link" href="#alerts" data-panel="alerts">Alert Activation</a>
+      <div class="nav-menu">
+        <button class="nav-link nav-menu-toggle" type="button" aria-expanded="false" aria-controls="alert-activation-menu">
+          Alert Activation
+          <svg class="nav-chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true">
+            <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <div class="nav-submenu" id="alert-activation-menu" hidden>
+          <a class="nav-sub-link" href="#alerts" data-panel="alerts">Telegram</a>
+          <a class="nav-sub-link" href="#earthranger" data-panel="earthranger">EarthRanger</a>
+        </div>
+      </div>
       <a class="nav-link" href="#install" data-panel="install">Firmware Update</a>
       <a class="nav-link" href="#download" data-panel="download">Download</a>
       <a class="nav-link" href="#troubleshooting" data-panel="troubleshooting">Troubleshooting</a>
@@ -38,6 +49,10 @@
 
     <section class="panel panel-hidden" id="panel-alerts">
       <p class="setup-loading">Loading Telegram alert setup…</p>
+    </section>
+
+    <section class="panel panel-hidden" id="panel-earthranger">
+      <p class="setup-loading">Loading EarthRanger alert setup…</p>
     </section>
 
     <section class="hero panel panel-hidden" id="panel-install">

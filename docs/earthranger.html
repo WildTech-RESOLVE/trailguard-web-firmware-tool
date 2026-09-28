@@ -1,0 +1,733 @@
+<style>
+.njer {
+  --njer-bg: var(--tg-ink-950, #0b0f0c);
+  --njer-surface: var(--tg-ink-900, #101813);
+  --njer-raised: var(--tg-ink-800, #16241c);
+  --njer-cream: var(--tg-text-100, #e8efe9);
+  --njer-muted: var(--tg-text-300, #9db3a5);
+  --njer-dim: rgba(232, 239, 233, 0.48);
+  --njer-orange: var(--tg-orange-500, #ff7a00);
+  --njer-orange-dim: rgba(255, 122, 0, 0.14);
+  --njer-line: var(--tg-ink-700, #1a2a21);
+  --njer-line-strong: var(--tg-ink-600, #2c3f34);
+  --njer-good: var(--tg-green-500, #2a9468);
+  --njer-warn: var(--tg-warn, #f59e0b);
+  --njer-display: var(--font-display, "Shuttleblock", "Inter", system-ui, sans-serif);
+  --njer-body: var(--font-sans, "Inter", system-ui, -apple-system, "Segoe UI", sans-serif);
+  --njer-mono: var(--font-mono, "Roboto Mono", ui-monospace, Menlo, Consolas, monospace);
+  min-width: 0;
+  background: var(--njer-bg);
+  color: var(--njer-cream);
+  font-family: var(--njer-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.njer * {
+  box-sizing: border-box;
+}
+
+.njer .njer-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 22px 88px;
+}
+
+.njer .njer-mast {
+  padding: 26px 0 0;
+}
+
+.njer h1 {
+  margin: 0;
+  color: var(--njer-cream);
+  font-family: var(--njer-display);
+  font-size: clamp(30px, 4.8vw, 44px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.njer .njer-pre {
+  margin: 26px 0 0;
+  padding: 22px 20px;
+  background: var(--njer-surface);
+  border: 1px solid var(--njer-line-strong);
+  border-radius: 12px;
+}
+
+.njer .njer-pre h2 {
+  margin: 0 0 8px;
+  font-family: var(--njer-display);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.njer .njer-pre p {
+  margin: 0 0 0.8em;
+  color: var(--njer-muted);
+  font-size: 16px;
+}
+
+.njer .njer-pre p:last-child {
+  margin-bottom: 0;
+}
+
+.njer strong {
+  color: var(--njer-cream);
+  font-weight: 600;
+}
+
+.njer .njer-place {
+  margin-top: 34px;
+}
+
+.njer .njer-place-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--njer-line-strong);
+}
+
+.njer .njer-place-head h2 {
+  margin: 0;
+  font-family: var(--njer-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.njer .njer-step {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 16px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--njer-line);
+}
+
+.njer .njer-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-top: 2px;
+  border: 1px solid var(--njer-line-strong);
+  border-radius: 6px;
+  color: var(--njer-orange);
+  font-family: var(--njer-mono);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.njer .njer-step h3 {
+  margin: 2px 0 8px;
+  font-family: var(--njer-display);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.njer .njer-step p {
+  margin: 0 0 0.8em;
+  color: var(--njer-muted);
+  font-size: 16px;
+}
+
+.njer .njer-step p:last-child {
+  margin-bottom: 0;
+}
+
+.njer .njer-step a,
+.njer .njer-foot a {
+  color: var(--njer-orange);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 122, 0, 0.35);
+}
+
+.njer .njer-step a:hover,
+.njer .njer-foot a:hover {
+  border-bottom-color: var(--njer-orange);
+}
+
+.njer .njer-event-type {
+  margin: 16px 0;
+}
+
+.njer .njer-label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--njer-orange);
+  font-family: var(--njer-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.njer .njer-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 14px 0 16px;
+  border: 1px solid var(--njer-orange);
+  border-radius: 8px;
+  background: var(--njer-orange-dim);
+  color: var(--njer-cream);
+  cursor: pointer;
+  font-family: var(--njer-mono);
+  font-size: 16px;
+}
+
+.njer .njer-chip:hover {
+  background: rgba(255, 122, 0, 0.2);
+}
+
+.njer .njer-chip:focus-visible {
+  outline: 2px solid var(--njer-orange);
+  outline-offset: 2px;
+}
+
+.njer .njer-copy {
+  padding-left: 12px;
+  border-left: 1px solid var(--njer-line-strong);
+  color: var(--njer-orange);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.njer .njer-chip.is-done {
+  border-color: var(--njer-good);
+  background: transparent;
+}
+
+.njer .njer-chip.is-done .njer-copy {
+  color: var(--njer-good);
+}
+
+.njer .njer-note {
+  margin: 14px 0 0;
+  padding: 2px 0 2px 15px;
+  border-left: 2px solid var(--njer-warn);
+}
+
+.njer .njer-note p {
+  margin: 0;
+  color: var(--njer-muted);
+  font-size: 15px;
+}
+
+.njer .njer-note p:first-child {
+  color: var(--njer-warn);
+}
+
+.njer .njer-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: 6px;
+  padding: 0 18px;
+  border: 0 !important;
+  border-radius: 8px;
+  background: var(--njer-orange);
+  color: #fff !important;
+  font-family: var(--njer-display);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.njer .njer-open:hover {
+  background: var(--tg-orange-600, #e06b00);
+}
+
+.njer .njer-ui {
+  margin: 14px 0 4px;
+  padding: 16px 17px;
+  border: 1px solid var(--njer-line-strong);
+  border-radius: 12px;
+  background: var(--njer-surface);
+}
+
+.njer .njer-ui-title {
+  margin: 0 0 4px;
+  color: var(--njer-cream);
+  font-family: var(--njer-display);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.njer .njer-ui-desc {
+  margin: 0 0 13px;
+  color: var(--njer-dim);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.njer .njer-ui-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 6px 0;
+}
+
+.njer .njer-ui-key {
+  width: 74px;
+  flex: none;
+  color: var(--njer-dim);
+  font-size: 13px;
+}
+
+.njer .njer-ui-row:first-of-type .njer-ui-key {
+  color: var(--njer-orange);
+}
+
+.njer .njer-ui-value {
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: var(--njer-raised);
+  color: var(--njer-cream);
+  font-family: var(--njer-mono);
+  font-size: 13px;
+}
+
+.njer .njer-proof,
+.njer .njer-triage {
+  margin-top: 44px;
+  padding-top: 32px;
+  border-top: 1px solid var(--njer-line-strong);
+}
+
+.njer .njer-proof h2,
+.njer .njer-triage h2 {
+  margin: 0 0 14px;
+  font-family: var(--njer-display);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.njer .njer-event {
+  max-width: 400px;
+  overflow: hidden;
+  border: 1px solid var(--njer-line-strong);
+  border-radius: 12px;
+  background: var(--njer-surface);
+}
+
+.njer .njer-event-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--njer-line);
+}
+
+.njer .njer-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  background: var(--njer-orange);
+  color: #fff;
+  font-family: var(--njer-display);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.njer .njer-event-name {
+  font-family: var(--njer-display);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.njer .njer-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 132px;
+  border-bottom: 1px solid var(--njer-line);
+  background: var(--njer-raised);
+}
+
+.njer .njer-frame > span {
+  color: var(--njer-dim);
+  font-family: var(--njer-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.njer .njer-box {
+  position: absolute;
+  top: 20%;
+  left: 34%;
+  width: 30%;
+  height: 58%;
+  border: 1.5px solid var(--njer-orange);
+}
+
+.njer .njer-box::after {
+  content: "person 0.94";
+  position: absolute;
+  top: -17px;
+  left: -1px;
+  padding: 1px 4px;
+  background: var(--njer-orange);
+  color: #fff;
+  font-family: var(--njer-mono);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.njer .njer-event-body {
+  padding: 13px 14px 15px;
+}
+
+.njer .njer-event-body p {
+  margin: 0 0 5px;
+  color: var(--njer-cream);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.njer .njer-event-body .njer-meta {
+  color: var(--njer-muted);
+  font-family: var(--njer-mono);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.njer details {
+  border-top: 1px solid var(--njer-line);
+}
+
+.njer details:last-of-type {
+  border-bottom: 1px solid var(--njer-line);
+}
+
+.njer summary {
+  position: relative;
+  padding: 17px 42px 17px 0;
+  color: var(--njer-cream);
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--njer-display);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.njer summary::-webkit-details-marker {
+  display: none;
+}
+
+.njer summary::after {
+  content: "+";
+  position: absolute;
+  top: 14px;
+  right: 6px;
+  color: var(--njer-orange);
+  font-family: var(--njer-mono);
+  font-size: 18px;
+}
+
+.njer details[open] summary::after {
+  content: "\2212";
+}
+
+.njer .njer-answer {
+  width: 100%;
+  padding: 0 0 22px;
+}
+
+.njer .njer-answer p {
+  margin: 0;
+  color: var(--njer-muted);
+  font-size: 15.5px;
+}
+
+.njer .njer-answer code {
+  color: var(--njer-cream);
+  font-family: var(--njer-mono);
+  font-size: 14px;
+}
+
+.njer .njer-foot {
+  margin-top: 44px;
+  padding: 26px 24px;
+  border: 1px solid var(--njer-line-strong);
+  border-radius: 12px;
+  background: var(--njer-surface);
+}
+
+.njer .njer-foot h3 {
+  margin: 0 0 7px;
+  font-family: var(--njer-display);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.njer .njer-foot p {
+  margin: 0;
+  color: var(--njer-muted);
+  font-size: 15.5px;
+}
+
+#panel-earthranger {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .njer {
+    font-size: 16px;
+  }
+
+  .njer .njer-mast {
+    padding-top: 18px;
+  }
+
+  .njer .njer-step {
+    grid-template-columns: 26px 1fr;
+    gap: 13px;
+  }
+
+  .njer .njer-num {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .njer .njer-ui-row {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .njer .njer-ui-key {
+    width: auto;
+  }
+
+  .njer .njer-chip {
+    font-size: 13px;
+  }
+}
+
+@media print {
+  .njer {
+    font-size: 10.5pt;
+  }
+
+  .njer .njer-wrap {
+    max-width: none;
+    padding: 14mm 13mm;
+  }
+
+  .njer .njer-step,
+  .njer .njer-note,
+  .njer .njer-ui,
+  .njer .njer-event,
+  .njer details {
+    break-inside: avoid;
+  }
+
+  .njer summary::after {
+    display: none;
+  }
+}
+</style>
+
+<div class="njer">
+  <div class="njer-wrap">
+    <header class="njer-mast">
+      <h1>Connect TrailGuard to EarthRanger</h1>
+    </header>
+
+    <section class="njer-pre">
+      <h2>Before You Begin</h2>
+      <p>You need admin access to your EarthRanger site and Nightjar project. Add coordinates for every camera you want shown on the map.</p>
+      <p>Connections are set per project and are currently in beta. Telegram and email alerts continue as before.</p>
+    </section>
+
+    <section class="njer-place">
+      <div class="njer-place-head">
+        <h2>In EarthRanger and Gundi</h2>
+      </div>
+
+      <div class="njer-step">
+        <div class="njer-num">1</div>
+        <div>
+          <h3>Create the event type</h3>
+          <p>Under <strong>Activity &rsaquo; Event Types</strong>, create this event type exactly as written:</p>
+          <div class="njer-event-type">
+            <span class="njer-label">Event type</span>
+            <button class="njer-chip" type="button" data-copy="nightjar_detection_rep">
+              nightjar_detection_rep
+              <span class="njer-copy">Copy</span>
+            </button>
+          </div>
+          <p>Species, category, and severity travel as fields on this event. How those events are presented on your site is configured inside EarthRanger, so your EarthRanger admin is the right person to ask about that.</p>
+          <div class="njer-note">
+            <p>Required permission</p>
+            <p>Give the Gundi service account access to the event category containing this type. Without it, events may be accepted and then silently dropped.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="njer-step">
+        <div class="njer-num">2</div>
+        <div>
+          <h3>Create the Gundi connection and route</h3>
+          <p>In Gundi, create a <strong>Connection</strong> for your EarthRanger site, then a <strong>Route</strong> that uses it as the destination. Both are required.</p>
+          <a class="njer-open" href="https://gundiservice.org" target="_blank" rel="noopener">Open the Gundi portal</a>
+          <p style="margin-top:14px">Copy the API key and site name for the Nightjar administrator.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="njer-place">
+      <div class="njer-place-head">
+        <h2>On the Dashboard</h2>
+      </div>
+
+      <div class="njer-step">
+        <div class="njer-num">3</div>
+        <div>
+          <h3>Check camera coordinates</h3>
+          <p>Every camera needs latitude and longitude under <strong>Camera Management</strong>. Alerts from cameras without coordinates stay on Telegram and email but are held back from EarthRanger.</p>
+        </div>
+      </div>
+
+      <div class="njer-step">
+        <div class="njer-num">4</div>
+        <div>
+          <h3>Paste the key and connect</h3>
+          <p>In <a href="https://app.nightjar.tech" target="_blank" rel="noopener">Nightjar IQ</a>, go to <strong>Admin &rsaquo; Alert Rules</strong>. Find the EarthRanger card, paste the API key, add a recognizable site name, and press <strong>Connect</strong>.</p>
+          <div class="njer-ui" aria-hidden="true">
+            <p class="njer-ui-title">EarthRanger</p>
+            <p class="njer-ui-desc">Send this project&rsquo;s alerts and images to an EarthRanger site.</p>
+            <div class="njer-ui-row">
+              <span class="njer-ui-key">API key</span>
+              <span class="njer-ui-value">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span>
+            </div>
+            <div class="njer-ui-row">
+              <span class="njer-ui-key">Site name</span>
+              <span class="njer-ui-value">Example Reserve</span>
+            </div>
+          </div>
+          <p style="margin-top:14px">Nightjar sends a <strong>Nightjar connection test</strong> event immediately. An invalid key is rejected and not saved.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="njer-place">
+      <div class="njer-place-head">
+        <h2>Confirm</h2>
+      </div>
+
+      <div class="njer-step">
+        <div class="njer-num">5</div>
+        <div>
+          <h3>Find the test event and turn alerts on</h3>
+          <p>Find <strong>Nightjar connection test</strong> in the EarthRanger events feed, then confirm the connection on the Nightjar card. Wait for one real alert with its image before treating setup as complete.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="njer-proof">
+      <h2>What a Working Event Looks Like</h2>
+      <div class="njer-event">
+        <div class="njer-event-head">
+          <div class="njer-avatar" aria-hidden="true">TG</div>
+          <span class="njer-event-name">nightjar_detection_rep</span>
+        </div>
+        <div class="njer-frame">
+          <span>Detection image</span>
+          <div class="njer-box" aria-hidden="true"></div>
+        </div>
+        <div class="njer-event-body">
+          <p><strong>Person detected</strong></p>
+          <p class="njer-meta">North Gate Camera 2<br>2 Sep 2026, 04:12 local<br>Confidence 94% &middot; Threat &middot; High</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="njer-triage">
+      <h2>Troubleshooting FAQ</h2>
+
+      <details>
+        <summary>Nothing arrives, but Telegram still works</summary>
+        <div class="njer-answer">
+          <p>Check <code>nightjar_detection_rep</code> is an exact match, the Gundi service account can access its event category, and the Route lists your EarthRanger site as its destination.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Some cameras appear and others do not</summary>
+        <div class="njer-answer">
+          <p>Check the missing cameras have coordinates under Camera Management. Nightjar does not send an EarthRanger event without a known location.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>The detection is on the dashboard, but no event arrived</summary>
+        <div class="njer-answer">
+          <p>Only results matching an alert rule and its confidence threshold become alerts. Check whether the image is under Observations instead of Alerts.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>It was working, then stopped</summary>
+        <div class="njer-answer">
+          <p>Check the key and Nightjar connection, then check the EarthRanger event type is active and its category permissions have not changed.</p>
+        </div>
+      </details>
+    </section>
+
+    <div class="njer-foot">
+      <h3>Still stuck?</h3>
+      <p>Email <a href="mailto:alee@nightjar.tech">alee@nightjar.tech</a> with your project name and 15-digit camera ID.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll(".njer [data-copy]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var value = button.getAttribute("data-copy");
+      var label = button.querySelector(".njer-copy");
+      var done = function () {
+        button.classList.add("is-done");
+        if (label) label.textContent = "Copied";
+        setTimeout(function () {
+          button.classList.remove("is-done");
+          if (label) label.textContent = "Copy";
+        }, 1800);
+      };
+      var fallback = function () {
+        var textarea = document.createElement("textarea");
+        textarea.value = value;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          if (document.execCommand("copy")) done();
+        } catch (error) {}
+        document.body.removeChild(textarea);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).then(done, fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
+})();
+</script>

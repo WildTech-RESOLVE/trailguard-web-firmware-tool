@@ -1,15 +1,3 @@
-<!-- ============================================================
-     support.nightjar.tech  -  Telegram alert setup
-     Wrapper class: .njtg  (scoped, will not leak into site styles)
-     Fetched into the #alerts panel by assets/js/main.js, which also
-     wires the Option A / Option B switch (initTelegramSwitch).
-     Tokens remapped onto the TrailGuard design system
-     (assets/css/tg-design-system.css); fallback values keep the
-     page readable if opened directly.
-     Copy passed against nightjar-writing-guide.md
-     Content source: TrailGuard_Telegram_Alert_Setup_Guide_09.02.26.md
-     ============================================================ -->
-
 <style>
 .njtg{
   --njtg-bg:var(--tg-ink-950,#0b0f0c); --njtg-surface:var(--tg-ink-900,#101813); --njtg-raised:var(--tg-ink-800,#16241c);
@@ -533,9 +521,6 @@
 </div>
 </div>
 
-<!-- Standalone fallback: scripts injected via innerHTML never execute, so this
-     runs only when the file is opened directly (not inside the web-tools page,
-     where assets/js/main.js initTelegramSwitch handles the switch). -->
 <script>
 (function () {
   var buttons = Array.prototype.slice.call(document.querySelectorAll(".njtg-switch-btn[data-flow]"));
